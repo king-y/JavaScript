@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时单次</title>
+    <style>
+        button {
+            background: #cae;
+            border:1px solid #cea;
+            outline: #cea;
+            color:#fff;
+        }
+        button:hover {
+            background:#BE0 !important;
+        }
+    </style>
+</head>
+<body>
+    <button id="start" >启动<span id="num"></span></button>
+    <script>
+        var m = 10;
+        var oStart = document.getElementById('start');
+        var oNum = document.getElementById('num');
+        oStart.onclick = start;
+        function start(){
+            oStart.disabled = 'on';
+            oStart.style.background = '#ccc';
+            m--;
+            oNum.innerHTML = '(' + m + ')';
+
+            // 判断到0停止
+            if (m <= 0) {
+                oStart.disabled = '';
+                oStart.style.background = '#cae';
+                m = 10;
+                oNum.innerHTML = '';
+                return;
+            }
+
+            timer = setTimeout('start()', 500);
+        }
+    </script>
+</body>
+</html>
