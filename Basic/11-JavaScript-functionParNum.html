@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的可变参数个数</title>
+    <script>
+        window.onload = function (){
+
+            //求和函数
+            function sum(){
+                console.log(arguments);
+                var num = 0;
+
+                for (var i = 0; i < arguments.length; i++) {
+                    num += arguments[i];
+                }
+
+                return num;
+            }
+
+            console.log(sum());
+            console.log(sum(10));
+            console.log(sum(10,20,30));
+            console.log(sum(10,20,30,40));
+
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>
