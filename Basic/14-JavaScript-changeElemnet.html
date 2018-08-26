@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更变元素对象</title>
+    <script>
+        window.onload = function(){
+            var oImg = document.getElementById('img');
+             var oBtn = document.getElementById('big');
+            oBtn.onclick = function(){
+                oImg.width += 50;
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="1.png" alt="test" width="100px" id="img">
+    <button id="big">大不大</button>
+</body>
+</html>
