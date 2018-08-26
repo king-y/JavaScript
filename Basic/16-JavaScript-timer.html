@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器基本</title>
+</head>
+<body>
+    <button onclick="stop()">单次定时</button>
+    <button onclick="stop1()">多次定时</button>
+    <script>
+        //单次
+        var oTime = setTimeout('console.log(1);',500);
+        function stop(){
+            clearTimeout(oTime);
+        }
+
+        // 多次
+        var oTime1 = setInterval('console.log(2);',500);
+        function stop1(){
+            clearInterval(oTime1);
+        }
+    </script>
+</body>
+</html>
