@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的引用和调用</title>
+<script>
+    (function(){
+        function oFn(){
+            console.log('Hi~ o(*￣▽￣*)ブ');
+        }
+        var a = oFn(); //调用
+        var b = oFn;  //引用
+
+        console.log('a: ' + a);
+        console.log('b: ' + b);
+        b();
+})()
+</script>
+</head>
+<body>
+
+</body>
+</html>
