@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三种声明方式</title>
+<script>
+    // 关键字
+        function demo(){
+            console.log('关键字!');
+        }
+        demo();
+    //表达式
+        var oTest = function (){
+            console.log('表达式!');
+        }
+        oTest();
+    //Function构造函数
+        var oFn = new Function('console.log("我是new出来的");');
+        oFn();
+</script>
+</head>
+<body>
+
+</body>
+</html>
