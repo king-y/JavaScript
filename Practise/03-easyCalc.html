@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>简单的计算器</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        margin: auto auto;
+    }
+
+    td {
+        width: 150px;
+        line-height: 70px;
+        border: 1px solid #00BCD4;
+    }
+
+    .btn {
+        width: 150px;
+        height: 120px;
+        font-size: x-large;
+    }
+
+    .btn_click {
+        width: 302px;
+        height: 80px;
+        font-size: x-large;
+    }
+
+    .txt {
+        width: 605px;
+        line-height: 100px;
+        font-size: x-large;
+        text-align: right;
+    }
+
+    input {
+        border:none;
+        outline: none;
+        background: none;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4">
+                <input class="txt" type="text" disabled/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input class="btn_click" type="button" value="AC" />
+            </td>
+            <td colspan="2">
+                <input class="btn_click" type="button" value="C" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="7" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="8" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="9" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="*" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="4" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="5" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="6" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="/" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="1" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="2" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="3" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="-" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="0" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="." />
+            </td>
+            <td>
+                <input class="btn" type="button" value="+" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="=" />
+            </td>
+        </tr>
+    </table>
+    <script>
+    window.onload = function() {
+        var oRes = [];
+        var oBtn = document.getElementsByClassName("btn");
+        var oTxt = document.getElementsByClassName("txt")[0];
+        var oBtnWay = document.getElementsByClassName("btn_click");
+        for (var i = 0; i < oBtnWay.length; i++) {
+            oBtnWay[i].onclick = function() {
+                if (this.value == "AC") {
+                    oRes = [];
+                    oTxt.value = "";
+                } else {
+                    oTxt.value = oTxt.value.substr(0, oTxt.value.length - 1);
+                }
+            }
+        }
+
+        for (var i = 0; i < oBtn.length; i++) {
+            oBtn[i].onclick = function() {''
+                if (oTxt.value == "" && this.value == "." || oTxt.value == "" && this.value == "0") {
+                    oTxt.value = "0.";
+                } else {
+                    if (!isNaN(this.value) || this.value == ".") {
+                    //是数字或者点
+                        if (oTxt.value.indexOf(".") != -1) {
+                        //有点存在的情况
+                            if (this.value != ".") {
+                            //当前按得不是点，进行拼接
+                               oTxt.value += this.value;
+                            }
+                        } else {
+                        //没点存在直接拼接
+                            oTxt.value += this.value;
+                            console.log(oTxt.value);
+                        }
+                    } else {
+                    //是符号的情况
+                        if (this.value != "=") {
+                        //是符号但不为等号的情况
+                            //先存值 再清屏
+                            oRes[oRes.length] = oTxt.value;
+                            //存符号
+                            oRes[oRes.length] = this.value;
+                            //清屏
+                            oTxt.value = "";
+                        } else {
+                        //是等号的情况
+                            oRes[oRes.length] = oTxt.value;
+                            oTxt.value = eval(oRes.join(""));
+                            oRes = [];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>
