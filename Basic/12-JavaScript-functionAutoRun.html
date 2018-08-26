@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的自动执行和闭包</title>
+    <script>
+        (function(){
+            console.log('第一种');
+        })();
+
+        (function(){
+            console.log('第二种');
+        }());
+        //自执行
+        function Fn(){
+        var oVar = '123456';
+        function Fn1(){
+            console.log(oVar);
+        }
+            return Fn1;
+        }
+        Fn()();
+
+        //闭包利用自执行原理
+        function Fn2(v){
+            return (function(){
+                console.log(v);
+            })();
+        }
+
+        Fn2(1231);
+        Fn2(4567);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
