@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo calc</title>
+</head>
+<body>
+    <h1>多版本简易计算器:</h1>
+      <textarea  id="result" cols="30" rows="10" style="width: 393px;"></textarea>
+    <br>
+    N1:
+    <input type="text" id="n1" onkeyup="value=value.replace(/[^0-9]/g,'')" onpaste="value=value.replace(/[^0-9]/g,'')" oncontextmenu = "value=value.replace(/[^0-9]/g,'')">
+    N2:
+    <input type="text" id="n2" onkeyup="value=value.replace(/[^0-9]/g,'')" onpaste="value=value.replace(/[^0-9]/g,'')" oncontextmenu = "value=value.replace(/[^0-9]/g,'')">
+    <br>
+    运算:
+    <!-- 1.1之前版本 -->
+   <!--  <input type="button" id="add" value="+">
+    <input type="button" id="cut" value="-">
+    <input type="button" id="multi" value="*">
+    <input type="button" id="divide" value="/"> -->
+    <!-- 1.1版本 -->
+    <input type="button" onclick="model(1)" value="+">
+    <input type="button" onclick="model(2)" value="-">
+    <input type="button" onclick="model(3)" value="*">
+    <input type="button" onclick="model(4)" value="/">
+</body>
+<script>
+// window.onload = function(){
+
+// }
+(function(){
+// 改进版 1.0.0
+        // var oAdd = document.getElementById('add');
+        // var oCut = document.getElementById('cut');
+        // var oMulti = document.getElementById('multi');
+        // var oDivide = document.getElementById('divide');
+
+        // oAdd.onclick = function(){
+        //     var oN1 = document.getElementById('n1').value;
+        //     var oN2 = document.getElementById('n2').value;
+        //      oRes = Number(oN1) + Number(oN2);
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        //  oCut.onclick = function(){
+        //     var oN1 = document.getElementById('n1').value;
+        //     var oN2 = document.getElementById('n2').value;
+        //     oRes = Number(oN1) - Number(oN2);
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        //  oMulti.onclick = function(){
+        //     var oN1 = document.getElementById('n1').value;
+        //     var oN2 = document.getElementById('n2').value;
+        //     oRes = Number(oN1) * Number(oN2);
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        // oDivide.onclick = function(){
+        //     var oN1 = document.getElementById('n1').value;
+        //     var oN2 = document.getElementById('n2').value;
+        //      if (oN2 == 0) {
+        //     alert('哼~你要搞事情啊~');
+        //     oN2 = 1;
+        //     document.getElementById('n2').value = oN2;
+        // }
+        //     oRes = Number(oN1) / Number(oN2);
+        //     document.getElementById('result').innerHTML = oRes.toFixed(2);
+        // }
+
+
+// 改进版1.0.1
+
+        // var oN1 = document.getElementById('n1');
+        // var oN2 = document.getElementById('n2');
+        // var oAdd = document.getElementById('add');
+        // var oCut = document.getElementById('cut');
+        // var oMulti = document.getElementById('multi');
+        // var oDivide = document.getElementById('divide');
+
+        // oAdd.onclick = function(){
+        //     oRes = Number(oN1.value) + Number(oN2.value);
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        //  oCut.onclick = function(){
+        //     oRes = oN1.value - oN2.value;
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        //  oMulti.onclick = function(){
+        //     oRes = oN1.value * oN2.value;
+        //     document.getElementById('result').innerHTML = oRes;
+        // }
+
+        // oDivide.onclick = function(){
+        //      if (oN2.value == 0) {
+        //     alert('哼~你要搞事情啊~');
+        //     oN2.value = 1;
+        // }
+        //     oRes = oN1.value / oN2.value;
+        //     document.getElementById('result').innerHTML = oRes.toFixed(2);
+        // }
+
+})();
+// 改进版 1.1.0
+
+    function model(m){
+        var oN1 = document.getElementById('n1');
+        var oN2 = document.getElementById('n2');
+        N1 = Number(oN1.value);
+        N2 = Number(oN2.value);
+        if (isNaN(oN1.value)) {
+            alert('(づ￣3￣)づ╭❤～搞事情?不存在的~');
+        }
+        switch(m){
+            case 1:
+                var oRes = N1 + N2;
+            break;
+
+            case 2:
+               var oRes =  N1 - N2;
+            break;
+
+            case 3:
+               var oRes =  N1 * N2;
+            break;
+
+            case 4:
+                if (N2 == 0) {
+                    alert('哼~你要搞事情啊~');
+                    return;
+                }
+                var oRes = ( N1 / N2).toFixed(2);
+            break;
+
+        }
+
+        document.getElementById('result').innerHTML = oRes;
+    }
+</script>
+</html>
