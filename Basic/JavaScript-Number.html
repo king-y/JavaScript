@@ -1,0 +1,249 @@
+<!--
+*
+*
+* @Author: wyy
+* @Date:   2018-08-23 19:48:08
+* @Email:  2752154874@qq.com
+* @Last Modified by:   wyy
+* @Last Modified time: 2018-08-23 21:12:51
+*
+*
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数值</title>
+</head>
+<body>
+    <script>
+        //JS区分0和-0
+        var num = 123;
+        var num = 123.123;
+        var num = 0b10;
+        var num = 010;
+        var num = 0xff;
+        var num = 5e2;
+        var num = 5e-2;
+
+        var num = NaN;
+
+        console.log('值: ' , num);
+        console.log('类型: ' , typeof(num))
+
+        //NaN本身为false
+        //其他类型转为数值失败时都为NaN
+        console.log(NaN - 100);
+        if(NaN){
+            console.log('Yes');
+        }else{
+            console.log('No');
+        }
+
+        //NaN
+        var a = '123ad';
+        //123
+        var a = '123';
+        //NaN
+        var a = 'f3ad';
+        //0
+        var a = false;
+        //1
+        var a = true;
+        //NaN
+        var a = undefined;
+        var a = new Object();
+        var a = Array(1,23);
+
+        //1e+124
+        var a = 10e123;
+
+        //3
+        var a = 0b11;
+
+        //255
+        var a = 0xff;
+
+        //1.23
+        var a = 1.23;
+
+        //0
+        var a = '';
+
+        //1200
+        var a = '12e2';
+
+        //0
+        var a = null;
+
+        //90
+        var a = 0132;
+
+        var n = Number(a);
+        console.log(n);
+
+/*
+-------------------------------------------------------------------------------------
+--Number()
+--
+--
+--Boolean值，true和false值将分别被转为1和0。
+--
+--数字值，整型就是整型,浮点型就是浮点型,科学计数就科学计数
+--
+--null值，转为0
+--
+--二进制,八进制,十六进制格式，转为十进制的数值
+--
+--字符串为空，转为0
+--
+--字符串中是纯科学计数，数值会直接转为十进制的数值
+--
+--undefined , 对象 , 数组 ,字符串不为纯数字和科学计数时 返回NaN
+------------------------------------------------------------------------------------
+ */
+
+
+        //123
+        var a = '123ad';
+        //123
+        var a = '123';
+        //NaN
+        var a = 'f3ad';
+        //NaN
+        var a = false;
+        //NaN
+        var a = true;
+        //NaN
+        var a = undefined;
+        var a = new Object();
+
+        //13 第一个值
+        var a = Array(13,2);
+
+        //3100000能够解析处时正常解析，不能时只返回第一个数字
+        var a = 31e5;
+
+        //3
+        var a = 0b11;
+
+        //255
+        var a = 0xff;
+
+        //1
+        var a = 1.23;
+
+        //NaN
+        var a = '';
+
+        //12  字符串只返回12e舍弃
+        var a = '12e2';
+
+        //NaN
+        var a = null;
+
+        //1
+        var a = 1.5;
+
+        //90
+        var a = 0132;
+
+        var n = parseInt(a);
+        console.log(n);
+
+        var a = parseInt("10",2);
+        var a = parseInt("FF",16);
+        var a = parseInt("10",8);
+        console.log(a);
+
+/*
+-------------------------------------------------------------------------------------
+--parseInt()
+--
+--
+--数值正常转化,如果为浮点数,则转为整型,舍弃小数点后的数值
+--
+--字符串起始包含数字时则数字那段转为数值,后面舍弃
+--
+--二进制,八进制,十六进制转化时,转化为十进制的数值
+--
+--科学计数法,能解析时正常解析,不能时返回第一个数字
+--
+--Boolean,undefined , 对象 , 数组 ,空字符串,字符串开头不为纯数字和科学计数时 返回NaN
+--
+--parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。
+------------------------------------------------------------------------------------
+ */
+
+         //123
+        var a = '123ad';
+        //123
+        var a = '123';
+        //NaN
+        var a = 'f3ad';
+        //NaN
+        var a = false;
+        //NaN
+        var a = true;
+        //NaN
+        var a = undefined;
+        var a = new Object();
+
+        //13 第一个值
+        var a = Array(13,2);
+
+        //3100000 范围过大将转为科学计数法再大将为Infinity
+        var a = 31e5;
+
+        //3
+        var a = 0b11;
+
+        //255
+        var a = 0xff;
+
+        //1.23
+        var a = 1.23;
+
+        //NaN
+        var a = '';
+
+        //1200
+        var a = '12e2aa';
+
+        //NaN
+        var a = null;
+
+        //1.5
+        var a = 1.5;
+
+        //90
+        var a = 0132;
+
+        //
+        var a = 1.113;
+
+        var n = parseFloat(a);
+        console.log(n);
+
+/*
+-------------------------------------------------------------------------------------
+--parseFloat()
+--
+--
+--数值正常转化,整型为整型,浮点型为浮点型
+--
+--字符串起始包含数字时则数字那段转为数值,后面舍弃
+--
+--二进制,八进制,十六进制转化时,转化为十进制的数值
+--
+--科学计数法,能解析时正常解析,超出范围则返回Infinity
+--
+--Boolean,undefined , 对象 , 数组 ,空字符串,字符串开头不为纯数字和科学计数时 返回NaN
+--
+--不能有多个小数点报语法错误
+------------------------------------------------------------------------------------
+ */
+    </script>
+</body>
+</html>
