@@ -1,0 +1,185 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>js-dem-3</title>
+ 	<meta name="viewport" content="device-width">
+ 	<meta name="decription" content="a js test">
+ 	<style>
+ 		body {
+ 			background: #e9feff7a;
+ 		}
+ 		.set {
+ 			font-size: 18px;
+ 			margin-bottom: 10px;
+ 		}
+ 		.default {
+				width: 200px;
+				height: 200px;
+				border-style: solid;
+				background: #fff;
+			}
+		.set_btn {
+			background-color: red;
+			color:white;
+		}
+		.set_menu {
+			width: 270px;
+			height: auto;
+			margin: 80px 600px;
+			background-color: #c6c5c530;
+			display: none;
+		}
+		.small_bg {
+			width: 270px;
+			height: 38px;
+			margin-left: 13px;
+		}
+		p {
+			float: left;
+			margin-top: 10px;
+
+		}
+		.set_menu ul {
+			list-style-type: none;
+		}
+		.small_bg li {
+			float: left;
+			padding: 10px 8px;
+		}
+		input {
+			border: none;
+			vertical-align: middle;
+		}
+		input#red {
+ 		   	background: #E91E63;
+    		color: white;
+		}
+		input#yellow {
+ 		   	background: #FFC107;
+    		color: white;
+		}
+		input#blue {
+ 		   	background: #2196F3;
+    		color: white;
+		}
+		.num_btn {
+			border-style: groove;
+		}
+		.s_btn {
+			background-color: #4456BAFF;
+			color: white;
+			margin-left: 15px;
+		}
+ 	</style>
+ </head>
+ <body id="all">
+ 	<div class="set">请为下面的Div设置样式
+ 		<input type="button" class="set_btn" id="set" value="设置"></div>
+ 	<div class="default" id="def"></div>
+	 <div class="set_menu" id="menu">
+	 	<div class="small_bg">
+	 		<p>请选择背景颜色:</p>
+	 		<ul>
+	 			<li><input type="button" value="红" id="red"></li>
+	 			<li><input type="button" value="黄" id="yellow"></li>
+	 			<li><input type="button" value="蓝" id="blue"></li>
+	 		</ul>
+	 	</div>
+	 	<div class="small_bg">
+	 		<p>请选择宽(px):</p>
+	 		<ul>
+	 			<li><input type="button" class="num_btn" value="200" id="w2"></li>
+	 			<li><input type="button" class="num_btn" value="300" id="w3"></li>
+	 			<li><input type="button" class="num_btn" value="400" id="w4"></li>
+	 		</ul>
+	 	</div>
+	 	<div class="small_bg">
+	 		<p>请选择高(px):</p>
+	 		<ul>
+	 			<li><input type="button" class="num_btn" value="200" id="h2"></li>
+	 			<li><input type="button" class="num_btn" value="300" id="h3"></li>
+	 			<li><input type="button" class="num_btn" value="400" id="h4"></li>
+	 		</ul>
+	 	</div>
+	 	<div class="small_bg">
+	 		<ul>
+	 			<li><input class="s_btn" type="button" value="恢复" id="recover"></li>
+	 			<li><input class="s_btn" type="button" value="确定" id="ok"></li>
+	 		</ul>
+	 	</div>
+	 </div>
+ </body>
+ <script>
+
+ 	window.onload = function(){
+ 		var oSetbtn = document.getElementById("set");
+ 		var oSetmenu = document.getElementById("menu");
+ 		var oDef = document.getElementById("def");
+ 		var oBackground = document.getElementById("all");
+ 		var oRed = document.getElementById("red");
+ 		var oYellow = document.getElementById("yellow");
+ 		var oBlue =  document.getElementById("blue");
+ 		var oSetok = document.getElementById("ok");
+ 		var oRecover = document.getElementById("recover");
+ 		var oW2 = document.getElementById("w2");
+ 		var oW3 = document.getElementById("w3");
+ 		var oW4 = document.getElementById("w4");
+ 		var oH2 = document.getElementById("h2");
+ 		var oH3 = document.getElementById("h3");
+ 		var oH4 = document.getElementById("h4");
+
+ 	oSetbtn.onclick = function(){
+ 		oSetmenu.style.display = 'block';
+ 		oBackground.style.background = '#ebeabe4d';
+ 	}
+ 	oRed.onclick = function(){
+ 		oRed.style.background =  'red';
+ 		oDef.style.background = 'red';
+ 		oYellow.style.background =  '#FFC107';
+ 		oBlue.style.background = '#2196F3';
+ 	}
+ 	oYellow.onclick = function(){
+ 		oYellow.style.background =  'yellow';
+ 		oDef.style.background = 'yellow';
+ 		oRed.style.background = '#E91E63';
+ 		oBlue.style.background = '#2196F3';
+ 	}
+ 	oBlue.onclick = function(){
+ 		oBlue.style.background =  'blue';
+ 		oDef.style.background = 'blue';
+ 		oRed.style.background = '#E91E63';
+ 		oYellow.style.background =  '#FFC107';
+ 	}
+ 	oW2.onclick = function(){
+ 		oDef.style.width = '200px';
+ 	}
+ 	oW3.onclick = function(){
+ 		oDef.style.width = '300px';
+ 	}
+ 	oW4.onclick = function(){
+ 		oDef.style.width = '400px';
+ 	}
+ 	oH2.onclick = function(){
+ 		oDef.style.height = '200px';
+ 	}
+
+ 	oH3.onclick = function(){
+ 		oDef.style.height = '300px';
+ 	}
+ 	oH4.onclick = function(){
+ 		oDef.style.height = '400px';
+ 	}
+ 	oRecover.onclick = function(){
+ 		oDef.style.width = '200px';
+ 		oDef.style.height = '200px';
+ 		oDef.style.background = '#fff';
+ 	}
+ 	oSetok.onclick = function(){
+ 		oSetmenu.style.display = 'none';
+ 	}
+ 	}
+
+ </script>
+ </html>
