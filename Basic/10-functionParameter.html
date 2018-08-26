@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数参数</title>
+    <script>
+    window.onload = function(){
+
+        // 实参和形参
+        function oFn(m,n){
+            console.log(m + '和' + n + 'ヽ(￣ω￣(￣ω￣〃)ゝ');
+        }
+        oFn('小黑','小白');
+        oFn('小黑','小白','小拜');
+        oFn('小黑');
+
+        // 判断少参的情况,赋予默认值
+        function oFn(m,n){
+            if (n == undefined) {
+                n = '小拜';
+            }
+            console.log(m + 'like' + n);
+        }
+        oFn('小白');
+        oFn('小白','小黑');
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>
