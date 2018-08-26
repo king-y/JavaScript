@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <h1>JS 数据类型的自动转换</h1>
+    <hr>
+
+    <script>
+        // 数字环境
+        console.log(100 - '10');
+        console.log(100 * '10abc');
+        console.log(100 * true);
+
+        // 字符串环境
+        console.log(100 + true);
+        console.log(100 + '100');
+
+        // 布尔环境
+        // true
+        // false
+
+        // 无穷大
+        console.log(100 / 0); // Infinity
+        console.log(-100 / 0); // -Infinity
+
+        console.log(0 / 0); // NaN
+
+        // 浮点数的精度问题 ,计算机无法准确表示分数/小数
+        console.log(0.1 + 0.2); // 0.30000000000000004
+
+    </script>
+</body>
+</html>
