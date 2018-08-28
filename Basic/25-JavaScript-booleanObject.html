@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>boolean</title>
+    <script>
+        window.onload = function() {
+            var b = true;
+            var b = 0;
+            var b = new Boolean();
+            var b = new Boolean(-1);
+
+            // 转换
+            var b = new Boolean(false);
+            var b = new Boolean(undefined);
+            var b = new Boolean([]);
+            var b = new Boolean( null);
+            var b = new Boolean(' ');
+            var b = new Boolean(0);//false
+            var b = new Boolean('false');//true
+
+
+            console.log(b);
+            console.log(typeof(b));
+            console.log(b.constructor);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
