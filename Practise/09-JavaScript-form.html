@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+    <div id="check">
+        <input type="checkbox"  value="A">A <br>
+        <input type="checkbox"  value="B">B <br>
+        <input type="checkbox"  value="C">C <br>
+        <input type="checkbox"  value="D">D <br>
+        <input type="checkbox"  value="E">E <br>
+    </div>
+    <br><br>
+    <input type="button" onclick="checkAll();" value="全选">
+    <input type="button" onclick="checkRev()" value="反选">
+    <input type="button" onclick="getAll()" value="获取">
+</body>
+    <script>
+        var oCheck  = document.getElementById('check');
+        var oInput = oCheck.getElementsByTagName('input');
+
+        // 全选
+        function checkAll(){
+            for (var i = 0; i < oInput.length; i++) {
+                oInput[i].checked = true;
+            }
+        }
+
+        // 反选
+        function checkRev(){
+            for (var i = 0; i < oInput.length; i++) {
+                if (oInput[i].checked) {
+                    oInput[i].checked = false;
+                }else{
+                    oInput[i].checked = true;
+                }
+            }
+        }
+
+        // 获取值
+         var oRes = [];
+        function getAll(){
+            for(var i in oInput){
+                if(oInput[i].checked){
+                    oRes.push('第' + (Number(i)+1) + '个选项,您的选择是' + oInput[i].value);
+                }
+            }
+            if (oRes.length == 0) {
+                alert('您没有选择任何值');
+            }else{
+                alert(oRes);
+            }
+        }
+    </script>
+</html>
