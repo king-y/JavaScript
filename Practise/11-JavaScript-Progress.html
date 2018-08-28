@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>进度条</title>
+        <style type="text/css">
+            #pro {
+                width: 0px;
+                height: 20px;
+                background-color: #cea;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button onclick="down()">下载</button>
+        <button onclick="stop()">暂停</button>
+        <br />
+        <div id="pro"></div>
+    </body>
+    <script>
+        var count = 0;
+        var tid;
+
+        function Progress() {
+            count++;
+            if (count == 101) {
+                Fn();
+            } else {
+                var oPro = document.getElementById("pro")
+                oPro.innerText = count + "%";
+                oPro.style.width = 3 * count + "px";
+            }
+        }
+
+        function down() {
+            oStria = setInterval("Progress()", 100)
+        }
+        function stop(){
+            clearInterval(oStria)
+        }
+
+        function Fn() {
+            clearInterval(oStria)
+            alert("下载完成")
+        }
+    </script>
+
+</html>
