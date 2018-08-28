@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+    <script>
+        window.onload = function() {
+            var list = ['哈哈','芸芸','嘻嘻','嘿嘿','么么'];
+
+            // for遍历数组
+            for (var i = 0; i < list.length; i++) {
+                document.write(i + '--->' + list[i] + '<br>');
+            }
+            document.write('<hr>')
+            // for in 遍历数组
+            for (var i in list){
+                document.write(i + '--->' + list[i] + '<br>');
+            }
+            document.write('<hr>')
+            // 遍历对象
+            var obj = {
+                name:'萨达',
+                age:31,
+            }
+
+            for (var i in obj) {
+                document.write(i + '--->' + obj[i] + '<br>');
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
