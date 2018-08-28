@@ -9,15 +9,20 @@
             var b = 0;
             var b = new Boolean();
             var b = new Boolean(-1);
+// 转换
+/**
+ *如果省略 value 参数，或者设置为 0、-0、null、""、false、undefined 或 *NaN，则该对象设置为 false。否则设置为 true（即使 value 参数是字符串 *"false"）。
+ */
 
-            // 转换
             var b = new Boolean(false);
             var b = new Boolean(undefined);
             var b = new Boolean([]);
             var b = new Boolean( null);
-            var b = new Boolean(' ');
             var b = new Boolean(0);//false
             var b = new Boolean('false');//true
+            var b = new Boolean(-0);
+            var b = new Boolean("");
+            var b = new Boolean(" ");//true
 
 
             console.log(b);
