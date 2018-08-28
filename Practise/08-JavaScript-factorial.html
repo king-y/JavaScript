@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两种实现阶乘方法</title>
+    <style>
+        #box {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+
+             var oBox = document.getElementById('box');
+             var oCount = document.getElementById('count');
+
+            // 第一种方法 while循环
+               // oCount.onclick = function (){
+               //      var oNum = document.getElementById('num').value;
+               //      oNum = Number(oNum);
+               //      if(oNum <= 1){
+               //           oBox.innerHTML = 1;
+               //      }
+               //      var oRes = 1;
+               //      while(oNum){
+               //          oRes *= oNum;
+               //          oNum--;
+               //      }
+               //      oBox.innerHTML = oRes;
+               //  }
+
+
+        // 第二种方法
+            oCount.onclick = function(){
+                var oNum = document.getElementById('num').value;
+                oNum = Number(oNum);
+                function factorial (num) {
+                    if (num <= 1) {
+                        return 1;
+                    } else {
+                        return (num * factorial(num-1));
+                    }
+                };
+                oRes=factorial(oNum);
+                oBox.innerHTML = oRes;
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <input type="text" id="num" onkeyup="value=value.replace(/[^0-9]/g,'')" onpaste="value=value.replace(/[^0-9]/g,'')" oncontextmenu = "value=value.replace(/[^0-9]/g,'')">
+    <input type="button" id="count" value="计算">
+</body>
+</html>
