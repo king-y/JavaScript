@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+    <script>
+        window.onload = function() {
+            function User(){
+                this.name = '特使';
+                this.age = 12;
+                this.getInfo = function(){
+                    document.write('Hi~ o(*￣▽￣*)ブ<br>')
+                }
+            }
+
+            var oA = new User();
+            var oB = new User();
+
+            User.prototype.getMsg = function() {
+                document.write('emmmmmmmmmm<br>')
+            }
+
+            console.log(oA);
+            console.log(oB);
+
+            oA.getMsg();
+            oB.getMsg();
+
+            var oN = 100;
+            Number.prototype.add = function(num){
+                return num + this;
+            }
+
+            console.log(oN.add(100));
+            console.log((100).add(100));
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
