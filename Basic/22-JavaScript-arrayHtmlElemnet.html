@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+    <script>
+        window.onload = function() {
+            var oNav = document.getElementById('nav');
+            var oLi = oNav.getElementsByTagName('li');
+
+            for (var i = 0; i < oLi.length; i++) {
+                oLi[i].style.border = '1px solid #666';
+            }
+            for(var i in oLi){
+                console.log(i + ':' + oLi[i]);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <ul id="nav">
+        <li>tt --- 1</li>
+        <li>tt --- 2</li>
+        <li>tt --- 3</li>
+        <li>tt --- 4</li>
+        <li>tt --- 5</li>
+    </ul>
+    <li>asd</li>
+</body>
+</html>
