@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象</title>
+    <script>
+        window.onload = function() {
+
+            // Object 构造函数
+            var obj = new Object();
+            obj.name = 'test';
+            obj.age = '12';
+            obj.getInfo = function() {
+                document.write('obj<br>')
+            }
+
+         console.log(obj);
+         console.log(obj.name);
+         obj.getInfo();
+
+
+            // JSON方式
+            var obj1 = {
+                name : 'Hello',
+                age : '12',
+                getInfo:function(){
+                    document.write('obj1<br>')
+                }
+            }
+
+         console.log(obj1);
+         console.log(obj1.name);
+         obj1.getInfo();
+
+         // 自定义构造
+
+         function User(){
+            this.name = 'TOM';
+            this.age = 12;
+            this.getInfo = function(){
+                document.write('obj2<br>')
+            }
+         }
+
+         var obj2 = new User();
+         console.log(obj2);
+         console.log(obj2.name);
+         obj2.getInfo();
+
+         // 匿名
+         var obj3 = new function(){
+            this.name = '崔红';
+            this.age = 10;
+            this.getInfo = function(){
+                document.write('obj3<br>')
+            }
+         }
+         console.log(obj3);
+         console.log(obj3.name);
+         obj3.getInfo();
+
+           // 测试类型
+        console.log('obj: ' + obj.constructor);
+        console.log('obj1: ' + obj1.constructor);
+        console.log('obj2: ' + obj2.constructor);
+        console.log('obj3: ' + obj3.constructor);
+
+        var oDiv = document.getElementsByTagName('div');
+        console.log('oDiv: ' + oDiv.constructor);
+        }
+
+
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
