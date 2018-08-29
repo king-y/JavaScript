@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+    <!-- 先写个low的后面有时间在扩展改动 -->
+ <form name="regForm" action="test.php" method="post" onsubmit="return checkForm()">
+        邮箱: <br>
+        <input type="email" name="email">
+        <span id="et" style="display: none;color:#cea;font-size: 20px;font-weight: 200">&nbsp;&nbsp;√</span>
+        <span id="ef" style="display: none;color:#f00;font-size: 20px;font-weight: 200">&nbsp;&nbsp;× <span style="font-size: 16px">邮箱格式错误</span></span>
+        <br>
+        用户名: <br>
+        <input type="text" name="user">
+        <span id="ut" style="display: none;color:#cea;font-size: 20px;font-weight: 200">&nbsp;&nbsp;√</span>
+         <span id="uf" style="display: none;color:#f00;font-size: 20px;font-weight: 200">&nbsp;&nbsp;×<span style="font-size: 16px">用户名格式错误</span></span>
+        <br>
+        密码: <br>
+        <input type="password" name="pass">
+        <span id="pt" style="display: none;color:#cea;font-size: 20px;font-weight: 200">&nbsp;&nbsp;√</span>
+         <span id="pf" style="display: none;color:#f00;font-size: 20px;font-weight: 200">&nbsp;&nbsp;× <span style="font-size: 16px">密码长度错误</span></span>
+        <br>
+        确认密码: <br>
+        <input type="password" name="repass">
+        <span id="ret" style="display: none;color:#cea;font-size: 20px;font-weight: 200">&nbsp;&nbsp;√</span>
+         <span id="ref" style="display: none;color:#f00;font-size: 20px;font-weight: 200">&nbsp;&nbsp;× <span style="font-size: 16px">两次密码不一致</span></span>
+        <br>
+        <input type="submit" value="注册">
+    </form>
+</body>
+<script>
+    function checkForm(){
+        // 邮箱
+        var oEmail = document.regForm.email.value;
+        var oEf = document.getElementById('ef');
+        var oET = document.getElementById('et');
+        if (oEmail.search(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/) === -1) {
+                oEf.style.display = 'inline-block';
+                oET.style.display = 'none';
+                return false;
+        }else{
+            oEf.style.display = 'none';
+            oET.style.display = 'inline-block';
+        }
+
+        // 用户名
+        var oUser = document.regForm.user.value;
+        var oUf = document.getElementById('uf');
+        var oUt = document.getElementById('ut');
+         if (oUser.match(/\w{6,12}/) === null) {
+            oUf.style.display = 'inline-block';
+            oUt.style.display = 'none';
+            return false;
+         }else{
+            oUf.style.display = 'none';
+            oUt.style.display = 'inline-block';
+         }
+
+         // 密码
+         var oPass = document.regForm.pass.value;
+         var oPf = document.getElementById('pf');
+         var oPt = document.getElementById('pt');
+         if (oPass.length < 6 || oPass.length > 32 ) {
+            oPf.style.display = 'inline-block';
+            oPt.style.display = 'none';
+            return false;
+         }else{
+            oPf.style.display = 'none';
+            oPt.style.display = 'inline-block';
+         }
+
+         // 密码对比
+
+         var oRePass = document.regForm.repass.value;
+         var oRepf = document.getElementById('ref');
+         var oRept = document.getElementById('ret');
+         if (oRePass !== oPass) {
+            oRepf.style.display = 'inline-block';
+            oRept.style.display = 'none';
+            return false;
+         }else{
+            oRepf.style.display = 'none';
+            oRept.style.display = 'inline-block';
+         }
+
+        return true;
+    }
+</script>
+</html>
