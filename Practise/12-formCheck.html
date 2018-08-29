@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+    <form name="regForm" action="test.php" method="post" onsubmit="return checkForm()">
+        <!-- 前端验证数据的合法性 -->
+        <!-- 后端验证数据的可用性 -->
+        邮箱: <br>
+        <input type="email" name="email"><br>
+        用户名: <br>
+        <input type="text" name="user"><br>
+        密码: <br>
+        <input type="password" name="pass"><br>
+        确认密码: <br>
+        <input type="password" name="repass"><br>
+        <input type="submit" value="注册">
+    </form>
+</body>
+<script>
+    function checkForm(){
+        // 邮箱
+        var oEmail = document.regForm.email.value;
+        if (oEmail.search(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/) === -1) {
+            alert("您的邮箱格式不正确");
+             return false;
+        }
+
+        // 用户名
+        var oUser = document.regForm.user.value;
+         if (oUser.match(/\w{6,12}/) === null) {
+            alert("您的用户名格式不正确");
+            return false;
+         }
+
+         // 密码
+         var oPass = document.regForm.pass.value;
+         if (oPass.length < 6 || oPass.length > 32 ) {
+            alert('密码长度不合法');
+            return false;
+         }
+
+         // 密码对比
+
+         var oRePass = document.regForm.repass.value;
+         console.log(oRePass);
+         if (oRePass !== oPass) {
+            alert('密码不一致');
+            return false;
+         }
+
+        return true;
+    }
+</script>
+</html>
