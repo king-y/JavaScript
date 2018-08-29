@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Math</title>
+</head>
+<body>
+    <script>
+
+        console.log(Math);//属性和方法
+
+        console.log(Math.constructor); //object
+
+        // E:2.718281828459045
+        // PI:3.141592653589793
+        console.log('PI: ', Math.PI);
+        console.log('E: ', Math.E);
+
+        // 绝对值
+        console.log('abs: ', Math.abs(-99));
+        console.log('abs: ', Math.abs(99));
+
+        // 开平方根
+        console.log('sqrt: ', Math.sqrt(4));
+        console.log('sqrt: ', Math.sqrt(16));
+        console.log('sqrt: ', Math.sqrt(81));
+
+        // 最大最小值
+        console.log('min: ', Math.min(15,1231,231,6,1231,14,8,55));
+        console.log('max: ', Math.max(15,1231,231,1231,6,854,598,55));
+
+        // 舍去取整
+        console.log('floor: ', Math.floor(19.9));
+        // 进一取整
+        console.log('ceil: ', Math.ceil(199.00000001));
+        // 四舍五入取整
+        console.log('round: ', Math.round(11.55));
+        console.log('round: ', Math.round(11.414));
+
+      // 四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一
+
+
+        // 随机数
+        document.write('随机数: ', Math.random() + '<br>');
+        // 0-9
+        document.write('0-9随机数: ', Math.floor(Math.random()*10) + '<br>');
+        // 0-10
+        document.write('0-10随机数: ', Math.round(Math.random()*10) + '<br>');
+
+        // 0-9
+        document.write('0-9随机数: ', Math.floor(Math.random()*100000%10) + '<br>');
+        // 0-10
+        document.write('0-10随机数: ', Math.round(Math.random()*100000%10) + '<br>');
+
+        // 6-15
+        document.write('6-15随机数: ', (Math.floor(Math.random()*100000%10) +6) + '<br>');
+
+/*
+        PS: JS随机数的产生.
+        Math.random()函数返回0和1之间的伪随机数,可能为0,但总是小于1,(0,1)
+
+        生成n-m,包含n 但不包含m 的整数:
+        1. 算出 m-n的值,假设等于w
+        2. Math.random()*w
+        3. Math.random()*w+n
+        4. parseInt(Math.random()*w+n, 10)
+*/
+    //10-20
+    document.write('10-20随机数: ', parseInt(Math.random()*10+10, 10) + '<br>');
+/*
+        生成n-m,不包含n 但包含m 的整数:​
+        1. 算出 m-n的值,假设等于w
+        2. Math.random()*w
+        3. Math.random()*w+n
+        4. Math.floor(Math.random()*w+n) + 1
+*/
+    document.write('10-20随机数: ', Math.floor(Math.random()*10+10) + 1 + '<br>');
+/*
+        生成n-m,不包含n和m的整数:
+        1. 算出 m-n-2的值,假设等于w
+        2. Math.random()*w
+        3. Math.random()*w+n +1
+        4. Math.round(Math.random()*w+n+1) 或者 Math.ceil(Math.random()*w+n+1)
+*/
+    document.write('10-20随机数: ', Math.round(Math.random()*8+11) + '<br>');
+
+/*
+        生成n-m,包含n和m的随机数:
+        1. 算出 m-n的值,假设等于w
+        2. Math.random()*w
+        3. Math.random()*w+n
+        4. Math.round(Math.random()*w+n) 或者 Math.ceil(Math.random()*w+n)
+
+*/
+    document.write('10-20随机数: ', Math.round(Math.random()*10+10) + '<br>');
+    </script>
+</body>
+</html>
