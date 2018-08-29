@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点名器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width: 500px;
+            height: 200px;
+            border:solid #FF9800 1px;
+            position: relative;
+            margin-left:40%;
+            margin-top: 20px;
+        }
+        @font-face {
+            font-family:wyy;
+            src:url(thin.TTF);
+        }
+        .nameArea{
+            width: 100%;
+            height: 200px;
+            font-family: wyy;
+            text-align: center;
+            font-size: 90px;
+            color: #ff9800;
+            line-height: 180px;
+        }
+
+        button{
+            width: 15%;
+            font-family: number;
+            text-align: center;
+            font-size: 21px;
+            color: #FFC107;
+            margin-top: 20px;
+            border: 1px solid;
+            background: none;
+            outline: none;
+            margin-left: 205px;
+        }
+        .btn {
+            position: relative;
+        }
+        .btn:focus{
+            outline: none;
+        }
+        .btn:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            pointer-events: none;
+            background-color: #F60;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            opacity: 0;
+            transition: all .3s;
+        }
+        .btn:active:after {
+            opacity: .3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0s;
+        }
+        .container{
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="nameArea" id="nameArea"></div>
+        <button id="btn" class="btn" onclick="Pointer()">开始</button>
+    </div>
+</body>
+ <script>
+        var oName = ['香巧','紫萱','涵易','忆之','幻巧','水风','安寒','白亦','惜玉','碧春','怜雪','听南','念蕾','紫夏','凌旋','芷梦','凌寒','梦竹','景浩','俊晖','君昊','浩然','鸿运','辰龙','运珹','振宇','高朗'];
+
+        var oNameArea = document.getElementById('nameArea');
+        var oBtn = document.getElementById('btn');
+        // 变量计时器
+        var oTime = 0;
+
+        var oSt = true;
+        // 控制按钮显示
+        function Pointer(){
+            if(oSt){
+                start();
+                oBtn.innerHTML="结束";
+                oSt=false;
+
+            }else{
+                stop();
+                oBtn.innerHTML="开始";
+                oSt=true;
+
+            }
+        }
+
+        function start(){
+            oTime = setInterval(function(){
+               var res = parseInt(Math.random()*oName.length, 10);
+                oNameArea.innerHTML = oName[res];
+            },50);
+        }
+
+        function stop(){
+            clearInterval(oTime);
+        }
+
+    </script>
+</html>
