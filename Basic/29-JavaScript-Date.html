@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象--Date</title>
+    <script>
+        window.onload = function() {
+            var oData = new Date();
+             console.log(oData);
+             console.log(typeof(oData));
+             console.log(oData.constructor);
+             // 年
+             document.write('年--->' + oData.getYear() + '<br>');
+             document.write('年--->' + oData.getFullYear() + '<br>');
+             // 月
+             document.write('月--->' + (oData.getMonth()+1) + '<br>');
+             // 星期
+            document.write('星期--->' + oData.getDay() + '<br>');
+            // 日
+            document.write('日--->' + oData.getDate() + '<br>');
+            // 时
+            document.write('时--->' + oData.getHours() + '<br>');
+             // 分
+             document.write('分--->' + oData.getMinutes() + '<br>');
+             // 秒
+             document.write('秒--->' + oData.getSeconds() + '<br>')
+             //毫秒
+             document.write('毫秒--->' + oData.getMilliseconds() + '<br>');
+
+             // 时间戳,毫秒为单位
+             document.write('时间戳--->' + oData.getTime() + '<br>');
+             // 标准时间获取
+             document.write('标准时区时间--->' + oData.getUTCHours() + '<br>');
+             console.log(oData.toLocaleString());
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
