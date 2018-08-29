@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegExp</title>
+    <script>
+        window.onload = function() {
+            var oStr = 'We still hava a long way to go';
+            var oReg = /^\w{4}$/;
+
+            var oReg = new RegExp(/\d{4}/);
+
+            console.log(oReg);
+            console.log(typeof(oReg));
+            console.log(oReg.constructor);
+
+            // test() 方法用于检测一个字符串是否匹配某个模式.
+            // 返回值
+                //如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。
+                console.log(oReg.test(oStr));
+                console.log(/\w{66}/.test(oStr));
+
+            // exec() 方法用于检索字符串中的正则表达式的匹配。
+            //返回值
+                //返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。
+                console.log(/\w{2}/.exec(oStr));
+                var oRes = /\w{2}/.exec(oStr);
+                console.log(oRes.index);
+                console.log(oRes[0]);
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
