@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右击菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav ul {
+            width: 90px;
+            text-align: center;
+            list-style: none;
+            border:1px solid #ccc;
+            box-shadow: 3px 3px 3px #ccc;
+            position: absolute;
+            display: none;
+        }
+        .nav li {
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oLis = document.getElementById('lis');
+
+            // 鼠标右击显示
+            document.oncontextmenu = function(en) {
+                var en = en || window.event;
+
+                // 右击位置
+                var x = en.x;
+                var y = en.y;
+
+                document.title = 'X' + x + ' | ' + 'Y' +  y;
+
+                oLis.style.left  = x + 'px';
+                oLis.style.top  = y + 'px';
+                oLis.style.display = 'block';
+                return false;
+            }
+
+            // 消失
+            document.onclick = function() {
+                oLis.style.display = 'none';
+            }
+
+            // hover效果
+            var oLi = oLis.getElementsByTagName('li');
+            for (var i = 0; i < oLi.length; i++) {
+                oLi[i].onmouseover = function() {
+                    this.style.background = '#00bcd4';
+                }
+                 oLi[i].onmouseout = function() {
+                    this.style.background = '';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <ul id="lis">
+            <li>测试1</li>
+            <li>测试2</li>
+            <li>测试3</li>
+            <li>测试4</li>
+            <li>测试5</li>
+        </ul>
+    </div>
+</body>
+</html>
