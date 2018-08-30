@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+    <script>
+        var oBox = document.getElementById('box');
+        oBox.onmousedown = function(en) {
+            this.style.background = '#cfe';
+        }
+         oBox.onmouseup = function(en) {
+            this.style.background = '#cfa';
+        }
+        oBox.onmousemove = function(en) {
+            console.log(en.x + ',' + en.y);
+        }
+    </script>
+</html>
