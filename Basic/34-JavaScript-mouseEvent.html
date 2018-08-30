@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav ul{
+            width: 50%;
+            list-style: none;
+            font-size: 18px;
+            border: 1px solid #FFC107;
+            text-align: center;
+            margin-top: 20px;
+            margin-left: 500px;
+        }
+        .nav li {
+            border-bottom: 1px solid #FFC107;
+            color: #8BC34A;
+            height: 50px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        button{
+            width: 15%;
+            font-family: number;
+            text-align: center;
+            font-size: 21px;
+            color: #FFC107;
+            margin-top: 20px;
+            border: 1px solid;
+            background: none;
+            outline: none;
+            margin-left: 815px;
+        }
+        .btn {
+            position: relative;
+        }
+        .btn:focus{
+            outline: none;
+        }
+        .btn:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            pointer-events: none;
+            background-color: #F60;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            opacity: 0;
+            transition: all .3s;
+        }
+        .btn:active:after {
+            opacity: .3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0s;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul id="lis">
+            <li>愿你三冬暖,愿你春不寒,更愿时光能缓，愿故人不散,有你相伴-----1</li>
+            <li>愿你三冬暖,愿你春不寒,更愿时光能缓，愿故人不散,有你相伴-----2</li>
+            <li id="love">愿你三冬暖,愿你春不寒,更愿时光能缓，愿故人不散,有你相伴--双击</li>
+            <li id="right">愿你三冬暖,愿你春不寒,更愿时光能缓，愿故人不散,有你相伴--右击</li>
+            <li>愿你三冬暖,愿你春不寒,更愿时光能缓，愿故人不散,有你相伴-----5</li>
+        </ul>
+    </div>
+</body>
+    <script>
+        var oLove = document.getElementById('love');
+        var oRight = document.getElementById('right');
+
+        oLove.ondblclick = function() {
+            oLove.innerHTML = '娘子~';
+        };
+
+
+        oRight.oncontextmenu = function() {
+            oRight.innerHTML = '啊哈~';
+        }
+
+
+    </script>
+</html>
