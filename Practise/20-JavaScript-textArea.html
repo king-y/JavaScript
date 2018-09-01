@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width: 50%;
+            height: 260px;
+            position: relative;
+            margin-top: 20px;
+            margin-left: 26%;
+            border: 1px solid #ff9800;
+        }
+        .nameArea{
+            width: 100%;
+            height: 230px;
+            font-size: 16px;
+            color: #FF7905;
+            border: none;
+            padding: 2px;
+            outline: none;
+            margin: 0;
+            resize: none;
+            margin-left: 0px;
+            background: rgba(1,1,1,0);
+        }
+        span{
+            float: right;
+            font-size: 12px;
+            margin-right: 5px;
+            color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <textarea class="nameArea" id="nameArea" onkeyup="checkWords()" onblur="checkWords()"></textarea>
+        <span id="wcount">您还可以输入140个字符</span>
+    </div>
+</body>
+    <script>
+        function checkWords()
+            {
+               var oTxt = document.getElementById('nameArea').value;
+               var oWc = document.getElementById("wcount")
+               //记录剩余字符串的长度
+               var len;
+
+               if(oTxt.length >= 140)
+               {
+                document.getElementById('nameArea').value = oTxt.substr(0,140);
+                len = 0;
+               }
+               else
+               {
+                 len = 140 - oTxt.length;
+               }
+               oWc.innerText = "您还可以输入" + len + "个字";
+            }
+    </script>
+</html>
