@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>银行卡</title>
+    <style>
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    请输入银行卡号:
+    <input onkeyup = "value=value.replace(/[^0-9]/g,'').replace(/\s/g,'').replace(/(\d{4})(?=\d)/g,'$1 ')" maxlength="19" >
+</body>
+</html>
