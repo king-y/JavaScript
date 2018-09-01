@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片加载错误</title>
+    <style>
+        #imgLis img{width: 200px;}
+    </style>
+</head>
+<body>
+    <div id="imgLis">
+        <img src="../imgs/Meinv001.jpg" alt="girl">
+        <img src="../imgs/Meinv002.jpg" alt="girl">
+        <img src="../imgs/Meinv003.jpg" alt="girl">
+        <img src="../imgs/Meinv004.jpg" alt="girl">
+        <img src="../imgs/Meinv005.jpg" alt="girl">
+        <img src="../imgs/Meinv0106.jpg" alt="girl">
+        <img src="../imgs/Meinv007.jpg" alt="girl">
+        <img src="../imgs/Meinv008.jpg" alt="girl">
+        <img src="../imgs/Meinv009.jpg" alt="girl">
+        <img src="../imgs/Meinv010.jpg" alt="girl">
+        <img src="../imgs/Meinv011.jpg" alt="girl">
+        <img src="../imgs/Meinv012.jpg" alt="girl">
+        <img src="../imgs/Meinv0113.jpg" alt="girl">
+        <img src="../imgs/Meinv014.jpg" alt="girl">
+        <img src="../imgs/Meinv015.jpg" alt="girl">
+        <img src="../imgs/Meinv016.jpg" alt="girl">
+        <img src="../imgs/Meinv017.jpg" alt="girl">
+        <img src="../imgs/Meinv0318.jpg" alt="girl">
+    </div>
+</body>
+    <script>
+        var oImg = document.getElementById('imgLis').getElementsByTagName('img');
+        for (var i = 0; i < oImg.length; i++) {
+            oImg[i].onerror = function(){
+                this.src = '../imgs/error.jpg';
+            }
+        }
+    </script>
+</html>
