@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打飞机</title>
+    <style>
+        #wrap {
+            width: 400px;
+            height: 500px;
+            background-image: url(../imgs/background.png);
+            margin: 0 auto;
+            position: relative;
+        }
+        #fly {
+            width: 40px;
+            height: 50px;
+            background-image: url(../imgs/z6.png);
+            position: absolute;
+            top: 350px;
+            left: 180px;
+        }
+        .egg {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-image: url(../imgs/BlueEgg.png);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="fly" style="top: 350px;left: 180px;"></div>
+        <div id="egg1"  class="egg" style="display:none;"></div>
+        <div id="egg2"  class="egg" style="display:none;"></div>
+        <div id="egg3"  class="egg" style="display:none;"></div>
+        <div id="egg4"  class="egg" style="display:none;"></div>
+        <div id="egg5"  class="egg" style="display:none;"></div>
+        <div id="egg6"  class="egg" style="display:none;"></div>
+        <div id="egg7"  class="egg" style="display:none;"></div>
+        <div id="egg8"  class="egg" style="display:none;"></div>
+        <div id="egg9"  class="egg" style="display:none;"></div>
+    </div>
+</body>
+<script>
+
+    //对键盘按键绑定事件
+    document.onkeydown = function(e) {
+        var fly = document.getElementById('fly');
+        var x = fly.style.left;
+        var y = fly.style.top;
+
+        switch(e.keyCode) {
+            // 小值之间取最大,大值之间取最小
+            case 37: fly.style.left = Math.max(parseInt(x) - 10 , 0) + 'px';break;
+            case 38: fly.style.top = Math.max(parseInt(y) - 10 , 0) + 'px';break;
+            case 39: fly.style.left = Math.min(parseInt(x) + 10 , 360) + 'px';break;
+            case 40: fly.style.top = Math.min(parseInt(y) + 10 , 450) + 'px';break;
+            case 32: fire(parseInt(x),parseInt(y));break;
+        }
+    }
+
+     function fire(x,y) {
+        for (var i = 1; i <= 9; i++) {
+            var t = new Date();
+            var egg = document.getElementById('egg'+i);
+            // 已显示的炮弹不能再有新的定位
+            if (egg.style.display == 'none') {
+                // 给炮弹定位
+                egg.style.left = (x + 10)+ 'px';
+                egg.style.top = (y -15) + 'px';
+                egg.style.display = 'block';
+                return;
+            }
+        }
+    }
+
+    // 炮弹飞行
+    setInterval(biu, 30);
+    function biu() {
+        for (var i = 1; i <= 9; i++) {
+            var egg = document.getElementById('egg'+i);
+            if (egg.style.display == 'block') {
+                egg.style.top = parseInt(egg.style.top) - 10 +'px';
+                if (parseInt(egg.style.top) <= 0) {
+                    egg.style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+</html>
