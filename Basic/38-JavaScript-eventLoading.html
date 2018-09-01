@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档事件加载</title>
+    <script>
+        window.onload = function() {
+            console.log(box + '前');
+        }
+    </script>
+</head>
+<body>
+    <img src="../imgs/Meinv00001.jpg" alt="美女" onload="alert('HelloWorld')">
+    <div id="box" onload="alert('Div加载完成~')">测试</div>
+</body>
+<script>
+    console.log(box + '后');
+</script>
+</html>
