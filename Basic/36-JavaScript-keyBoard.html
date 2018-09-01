@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘按键事件</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+        <div id="box" style="background: #cea;"></div>
+</body>
+<script>
+
+    //按键按下事件
+    document.onkeydown = function(){
+        document.body.style.background = '#cea';
+    }
+
+    // 按键松开事件
+    document.onkeyup = function(en) {
+        var en = en || window.event;
+        console.log(en);
+        //keyCode 不区分大小写
+        document.body.style.background = '#cae';
+    }
+
+    //按键中的高级事件
+    //非输出的按键都不能触发
+    //优先级高于onkeydown事件
+    // document.onkeypress = function() {
+    //     document.body.style.background = '#f99';
+    // }
+
+    // 获取style的值
+        // 直接写在改元素中
+        var oBox = document.getElementById('box').style.background;
+        console.log(oBox);
+
+        //原生JS获取
+        var oFly = document.defaultView.getComputedStyle(box);
+        var oW = oFly.width;
+        console.log(oW);
+
+        // jQuery获取
+</script>
+</html>
