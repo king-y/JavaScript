@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>window</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <button onclick="window.open()">open</button>
+    <button onclick="window.open('http://www.baidu.com')">百度</button>
+    <button onclick="window.open('http://www.wangnana.cn', 'new')">测试</button>
+    <button onclick="window.open('http://www.baidu.com','','width=300,height=600')">百度(指定大小)</button>
+
+    <button onclick="window.print()">打印</button>
+
+    <script>
+    window.name = 'new';
+
+    var oName = {name: 'Tom'};
+    console.log(oName);
+    console.log(window.oName);
+
+    var oNum = 100;
+    console.log(window.oNum);
+
+    function demo() {
+        console.log('demo');
+    }
+    window.demo();
+
+    function Hello(){
+        console.log(this);
+    }
+    Hello();
+
+
+
+    var a = alert('警告框');
+    // 返回值undefined
+    console.log(a);
+
+
+    var a = confirm('你确认码?');
+    // 返回值true或者false
+    console.log(a);
+
+
+    var a = prompt('请输入您的常用密码: ');
+    // 返回值,输入则输入内容/不输入这空字符/取消则null
+    console.log(a)
+
+    </script>
+</body>
+</html>
