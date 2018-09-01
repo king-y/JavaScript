@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>onresize事件</h1>
+    <hr>
+
+    <div id="box"></div>
+
+    <script>
+    window.onresize = function() {
+        box.innerHTML = Math.random();
+        // 随机色
+        var r = Math.floor(Math.random() * 100000 % 256);
+        var g = Math.floor(Math.random() * 100000 % 256);
+        var b = Math.floor(Math.random() * 100000 % 256);
+        document.body.style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+    }
+
+    </script>
+</body>
+</html>
