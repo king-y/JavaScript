@@ -67,21 +67,25 @@
     var str = document.getElementById("string").innerHTML;
 
     function type() {
-        if (index == str.length) {
-            clearInterval(timer)
-            clearInterval(time);
-        }
-        document.getElementById("showStr").innerText = str.substring(0, index++);
-        // console.log(index)
         // 光标闪烁
         var cursor=document.getElementById("cursor");
-           time = setInterval(function(){
+        var time = setInterval(function(){
+                     if (index == str.length) {
+                          clearInterval(timer)
+                          clearInterval(time);
+                          return;
+                      }
                     cursor.style.display="none";
                     setTimeout("cursor.style.display='inline'",500);
                   },700);
+        // if (index == str.length) {
+        //     clearInterval(timer)
+        // }
+        document.getElementById("showStr").innerText = str.substring(0, index++);
+        // console.log(index)
 
     }
-    timer = setInterval(type, 100);
+    timer = setInterval(type,100);
     </script>
 </body>
 
