@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #container {
+            position: relative;
+            margin: 0 auto;
+            width: 1226px;
+            height: 460px;
+            overflow: hidden;
+        }
+
+        #list {
+            position: absolute;
+            z-index: 1;
+            width: 9808px;
+            height: 460px;
+        }
+
+        #list img {
+            float: left;
+            width:1226px;
+        }
+
+        #buttons {
+            width: 145px;
+            height: 20px;
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
+            z-index: 2;
+        }
+
+        #buttons span {
+            width: 12px;
+            height: 12px;
+            list-style: none;
+            float: left;
+            background: lightgrey;
+            margin-left: 6px;
+            border-radius:6px;
+            cousor:pointer;
+        }
+
+        #buttons .current{
+            background: #f88535;
+        }
+
+        #prev {
+            z-index: 2;
+            width: 40px;
+            height: 70px;
+            background: url("img/icon-slides.png") 83px 0px;
+            position: absolute;
+            top: 42%;
+        }
+
+        #prev:hover {
+            background-position: 0px 0px;
+        }
+
+        #next {
+            z-index: 2;
+            width: 40px;
+            height: 70px;
+            background: url("img/icon-slides.png") 40px 0px;
+            position: absolute;
+            right: 0px;
+            top: 42%;
+            cursor: pointer;
+        }
+        #next:hover {
+             background-position: -43px 0px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var list = document.getElementById('list');
+            var buttons = document.getElementById('buttons').getElementsByTagName('span');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var index = 1;
+            var timer;
+
+            function animate(offset) {
+                //获取的是style.left，是相对左边获取距离，所以第一张图后style.left都为负值，
+                //style.left获取的是字符串，需要用parseInt()取整转化为数字。
+                var newLeft = parseInt(list.style.left) + offset;
+                list.style.left = newLeft + 'px';
+                //无限循环判断
+                if (newLeft > -1226) {
+                    list.style.left = -7356 + 'px';
+                }
+                if (newLeft < -7356) {
+                    list.style.left = -1226 + 'px';
+                }
+            }
+
+            function play() {
+                //执行的定时器
+                timer = setInterval(function () {
+                    next.onclick();
+                }, 1000)
+            }
+
+            function stop() {
+                clearInterval(timer);
+            }
+
+            // 小圆点跟随图片移动
+            function buttonsShow() {
+                //将之前的小圆点的样式清除
+                for (var i = 0; i < buttons.length; i++) {
+                    if (buttons[i].className == "current") {
+                        buttons[i].className = "";
+                    }
+                }
+                // 下标从0开始
+                buttons[index - 1].className = "current";
+            }
+
+            // 左右箭头
+            prev.onclick = function () {
+                index -= 1;
+                if (index < 1) {
+                    index = 6
+                }
+                buttonsShow();
+                animate(1226);
+            };
+
+            next.onclick = function () {
+                //判断,因为原点只有6个
+                index += 1;
+                if (index > 6) {
+                    index = 1
+                }
+                animate(-1226);
+                buttonsShow();
+            };
+
+            // 圆点点击
+            for (var i = 0; i < buttons.length; i++) {
+                (function (i) {
+                    buttons[i].onclick = function () {
+                        // 因为for循环.所以用this
+                        /*  用getAttribute()获取自定义index的属性*/
+                        var clickIndex = parseInt(this.getAttribute('index'));
+                        // 当前停留的
+                        var offset = 1226 * (index - clickIndex);
+                        animate(offset);
+                        //存放鼠标点击后的位置，赋给index
+                        index = clickIndex;
+                        buttonsShow();
+                    }
+                })(i)
+            }
+
+            container.onmouseover = stop;
+            container.onmouseout = play;
+            play();
+
+        }
+    </script>
+</head>
+
+<body>
+
+<div id="container">
+    <div id="list" style="left: -1226px;">
+        <a href="#"><img src="img/banner6.jpg"></a>
+        <a href="#"><img src="img/banner.jpg"></a>
+        <a href="#"><img src="img/banner2.jpg"></a>
+        <a href="#"><img src="img/banner3.jpg"></a>
+        <a href="#"><img src="img/banner4.jpg"></a>
+        <a href="#"><img src="img/banner5.jpg"></a>
+        <a href="#"><img src="img/banner6.jpg"></a>
+        <a href="#"><img src="img/banner.jpg"></a>
+    </div>
+    <div id="buttons">
+        <span index="1" class="current"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+        <span index="6"></span>
+    </div>
+    <div id="prev" class="arrow"></div>
+    <div id="next" class="arrow"></div>
+</div>
+
+</body>
+
+</html>
