@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字跑马灯</title>
+    <style>
+        #world {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+  <div id="world">
+    </div>
+
+<script>
+
+var Info = "愿你三冬暖，愿你春不寒；愿你天黑有灯，下雨有伞。愿你路上有良人相伴，愿你所有快乐 无需假装，愿你此生尽兴、赤诚善良。愿时光能缓，愿故人不散；愿有人陪你颠沛流离，愿你惦念的人能和你道早安，愿你独闯的日子里不觉得孤单。愿你人间走一遭，圆满了三界六道，看透了是非善恶；从此福来心至，皆是逍遥。";
+
+
+function Marquee(){
+    var oW = document.getElementById("world");
+    //textContent 属性设置或返回指定节点的文本内容
+    if(typeof(oW.textContent) == "string"){
+        oW.textContent=Info.substring(0,Info.length);
+    } else{
+        oW.innerText=Info.substring(0,Info.length);
+    }
+    Info=Info+Info.substring(0,1);
+    Info=Info.substring(1,Info.length);
+}
+setInterval(Marquee,150)
+</script>
+
+</body>
+</html>
