@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>marquee</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    img {
+    width: 200px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 10px;
+    display: block;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="wrap" style="width: 100%;height: 250px;border:1px solid #e8e8e8;margin-top: 10px;overflow: hidden;">
+        <table cellpadding="0">
+            <tbody>
+                <tr>
+                    <td id="left" valign="top">
+                        <table>
+                            <tbody>
+                                <tr align="center">
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="1.png"/>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td id="right" valign="top">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script >
+    //速度数值越大速度越慢
+    var right = document.getElementById("right");
+    var left = document.getElementById("left");
+    var wrap = document.getElementById("wrap");
+
+    right.innerHTML = left.innerHTML;
+
+    function Marquee() {
+            //offsetWidth 是对象的可见宽度
+            if (right.offsetWidth - wrap.scrollLeft <= 0){
+                    //scrollWidth 是对象的实际内容的宽，不包边线宽度
+                    wrap.scrollLeft -= left.offsetWidth
+        }
+        else {
+            wrap.scrollLeft++;
+        }
+
+    }
+    var timer = setInterval(Marquee, 10);
+
+</script>
+</html>
