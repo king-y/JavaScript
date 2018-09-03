@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css"></style>
+</head>
+<body>
+
+    <p>测试</p>
+    <p>测试</p>
+    <p>测试</p>
+    <p>测试</p>
+    <p>测试</p>
+    <p>测试</p>
+
+    <script>
+        <!-- 获取所有的标签 -->
+            if (document.all) {
+                document.write('IE<br>')
+            } else {
+                document.write('非IE<br>')
+            }
+
+            console.dir(document);
+            console.log(document);
+
+            // document只读.不可写
+            console.log('域名: ' + document.domain);
+            console.log('文档最后一次修改时间: ' + document.lastModified);
+            console.log('上一个页面地址: ' + document.referrer);
+            console.log('URL: ' + document.URL);
+
+            console.log(document.title);
+            document.title = '这是一个标题';
+            console.log(document.all);
+
+    </script>
+</body>
+</html>
