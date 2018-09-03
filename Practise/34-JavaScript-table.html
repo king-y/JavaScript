@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <h1>TABLE</h1>
+    <hr>
+    
+    <table width="800" id="tab" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>班期</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>芸芸</td>
+            <td>19</td>
+            <td>s78</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>静静</td>
+            <td>18</td>
+            <td>s79</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>鹏鹏</td>
+            <td>99</td>
+            <td>s79</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>洋洋</td>
+            <td>16</td>
+            <td>s79</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+    </table>
+
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form action="1.php" name="myform" onsubmit="return addData()">
+        姓名: <input type="text" name="name"><br>
+        年龄: <input type="text" name="age"><br>
+        班期: <input type="text" name="grade"><br>
+        <button>提交数据</button>
+    </form>
+
+
+    <script>
+    function addData() {
+        var tab = document.getElementById('tab');
+        var name = document.myform.name.value;
+        var age = document.myform.age.value;
+        var grade = document.myform.grade.value;
+
+        var index = tab.rows.length;
+        // console.log(index);
+        var tr = tab.insertRow(index);
+        // console.log(tr);
+        // 给表格添加 单元格
+        tr.insertCell(0).innerHTML = index;
+        tr.insertCell(1).innerHTML = name;
+        tr.insertCell(2).innerHTML = age;
+        tr.insertCell(3).innerHTML = grade;
+        tr.insertCell(4).innerHTML = '<button onclick="deleteData(this)">删除</button>';
+        return false;
+    }
+
+    function deleteData(obj) {
+        var tab = document.getElementById('tab');
+        var index = obj.parentNode.parentNode.rowIndex;
+        // console.log(index);
+        tab.deleteRow(index);
+    }
+
+    </script>
+</body>
+</html>
