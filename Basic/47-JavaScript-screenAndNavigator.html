@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>screen和navigate</title>
+    <script>
+        window.onload = function() {
+
+            // screen
+            console.log(screen);
+            console.log(screen.height , screen.width);
+
+            //navigate
+            console.log(navigator);
+            console.log(navigator.appVersion);
+            console.log(navigator.userAgent);
+
+            // 浏览器检测
+             var browser = {
+                versions: (function(){
+                    var u = navigator.userAgent;
+                    var app = navigator.appVersion;
+                    return {
+                        trident: u.indexOf('Trident')     > -1,                                   // IE内核
+                        presto : u.indexOf('Presto')      > -1,                                   // Opera内核
+                        webKit : u.indexOf('AppleWebKit') > -1,                                   // 苹果谷歌内核
+                        gecko  : u.indexOf('Gecko')       > -1 && u.indexOf('KHTML') == -1,       // 火狐内核
+                        mobile : !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/),  // 是否为移动端
+                        ios    : !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),                      // ios终端
+                        android: u.indexOf('Android')     > -1 || u.indexOf('Linux') > -1,        // android终端 或 uc浏览器
+                        iPhone : u.indexOf('iPhone')      > -1 || u.indexOf('Mac') > -1,          // 是否为iPhone 或 QQHD浏览器
+                        iPad   : u.indexOf('iPad')        > -1,                                   // 是否为iPad
+                        webApp : u.indexOf('Safari')      == -1                                   // 是否为web应用程序,没有头部和底部
+                    };
+                })()
+            }
+
+            document.write('是否为移动端:' + browser.versions.mobile + '<br>');
+            document.write('是否为ios端:' + browser.versions.ios + '<br>');
+            document.write('是否为android终端:' + browser.versions.android + '<br>');
+            document.write('是否为chrome浏览器:' + browser.versions.webKit + '<br>');
+            document.write('是否为FireFox浏览器:' + browser.versions.gecko + '<br>');
+            }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
