@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Hello world]titleMarquee</title>
+    <script>
+        window.onload = function() {
+
+
+
+        //标题的闪烁提示
+            // // 定义一个判断变量
+            // var oJudge = true;
+
+            // //利用定时器
+            // setInterval(function() {
+            //     if (oJudge) {
+            //         document.title = '[Hello world]titleMarquee';
+            //         oJudge = false;
+            //     }else{
+            //         document.title = '[　　　]titleMarquee'
+            //         oJudge = true;
+            //     }
+            // },500)
+
+
+        // 标题文字滚动
+        // [拼接法]
+        // 取得首字符,取得剩余字符,首字符,拼接在剩余字符之后
+
+            // 定时器
+            setInterval(function() {
+                // 获取值
+                var Info = document.title;
+
+                // 截取第一个字符
+                var oF = Info.charAt(0);
+
+                // 截取剩余字符
+                var oE = Info.substr(1);
+
+                // 拼接
+                document.title = oE + oF;
+
+            },500)
+
+
+
+        setInterval(function() {
+            // 截取拼接方法
+            var oMsg1 = document.getElementById('msg1');
+
+            // 定义变量存储oMsg1中的值
+            var oM1 = oMsg1.innerHTML;
+            // 拼接
+            oMsg1.innerHTML = oM1.substr(1) + oM1[0];
+
+            //数组方法
+            var oMsg2 = document.getElementById('msg2');
+
+            var oM2 = oMsg2.innerHTML;
+
+            // 切割成单个字符
+            oArry = oM2.split('');
+            // console.log(oArry);
+
+            // 将第一个字追加的末尾
+            oArry.push(oArry.shift());
+
+            // 使用join拼接
+            oMsg2.innerHTML = oArry.join('');
+
+        },500)
+
+
+        //单个字符改变
+        var oInfo = '千山鸟飞绝,万径人踪灭,孤舟蓑笠翁,独钓寒江雪';
+
+        var i = 0;
+        setInterval(function() {
+            // 大于字符长度则变为0
+            if (i >= oInfo.length) {
+                i = 0;
+            }
+            document.getElementById('show').innerHTML = show(i,oInfo);
+
+            i++;
+        },500)
+
+        // 放置在外面可以写更多的效果
+        // 执行并返回结果
+        function show(i,str) {
+            // 截取前面的值
+            var oTmp = str.substr(0,i);
+            oTmp += '<span style="color:#cea;font-size:19px;">' + str[i] + '</span>'
+            // 截取后面的值
+            oTmp += str.substr(i + 1);
+            return oTmp;
+        }
+
+        }
+    </script>
+</head>
+<body>
+    <p id="msg1">月落乌啼霜满天,江枫渔火对愁眠</p>
+    <p id="msg2">姑苏城外寒山寺,夜半钟声到客船</p>
+    <h4 id="show"></h4>
+</body>
+</html>
