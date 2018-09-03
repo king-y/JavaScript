@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            width: 50px;
+            height: 20px;
+            border: 0;
+
+        }
+        .active{
+            background-color: red;
+            color: white;
+            border: 0;
+        }
+        img {
+            width:50%;
+        }
+
+    </style>
+</head>
+<body>
+<input type="button" value="1" class="active"/>
+<input type="button" value="2"/>
+<input type="button" value="3"/>
+<div><img src="12.png"></div>
+<div style="display: none"><img src="13.jpg"></div>
+<div style="display: none"><img src="14.png"></div>
+<script>
+    window.onload=function(){
+        var oBtn = document.getElementsByTagName("input");
+        var oDiv = document.getElementsByTagName("div");
+        for(var i=0;i<oBtn.length;i++){
+            var j=i;
+            (function(j){
+                oBtn[j].onclick=function(){
+                    for(var i=0;i<oBtn.length;i++){
+                        oBtn[i].className="";
+                        oDiv[i].style.display="none";
+                    }
+                    this.className="active";
+                    oDiv[j].style.display="block";
+                };
+            })(i);
+        }
+    }
+</script>
+
+</body>
+</html>
