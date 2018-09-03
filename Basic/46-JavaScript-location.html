@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+<body>
+    <!-- 重载  -->
+    <button onclick="onreload()">重载</button>
+    <!-- 加载 -->
+    <button onclick="assign('http://www.w3school.com.cn')">加载</button>
+    <!-- 替换 -->
+    <button onclick="replace('http://www.w3school.com.cn')">替换</button>
+    <!-- location -->
+    <button onclick="location.href='http://www.w3school.com.cn'">赋值</button>
+    <script>
+        console.log(location);
+        // 网址
+        console.log('URL--->' + location.href);
+        // 主机端口号
+        console.log('host--->' + location.host);
+        //主机名
+        console.log('hostname--->' + location.hostname);
+        //协议
+        console.log('protocol--->' + location.protocol);
+        //路径
+        console.log('path--->' + location.pathname);
+        // 搜索
+        console.log('search--->' + location.search);
+        //锚点
+        console.log('hash--->' + location.hash);
+
+
+        //赋值操作
+        // location.href = 'http://www.baidu.com';
+
+        location.search = '?name=wyy';
+
+        location.hash = '#p=5';
+
+    </script>
+</body>
+</html>
