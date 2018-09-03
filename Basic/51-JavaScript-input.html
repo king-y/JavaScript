@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input</title>
+    <script>
+        window.onload = function() {
+            // 光标获焦
+            var oS = document.getElementById('search');
+            oS.focus();
+
+            //全选
+            var oT = document.getElementById('textAll');
+            var oA = document.getElementById('all');
+            oA.onclick = function(){
+                oT.select();
+            }
+
+            // 复制
+            var oC = document.getElementById('copy');
+            oC.onclick = function() {
+                if (window.clipboardData) {
+                    // 复制类型,复制的值
+                    clipboardData.setData('text',oT.value);
+                    alert('已复制到剪切板');
+                }else{
+                    oT.select();
+                    alert('请使用ctrl+c复制');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="search"><button>搜索</button>
+    <hr>
+    <button id="all">全选</button>
+    <button id="copy">全选复制</button>
+    <br>
+    <textarea name="" id="textAll" cols="30" rows="10">监控删除顺利前后如下主，对你执行时间冲突梦想欧美详细素质对话显然最低平台便宜公安，我现在梦想回忆已。是否前往经历恢复不怕人力前往我去相机，居然艺术加入没什么作用的人广东读者传统交换短信，微软能量代理。clorem20</textarea>
+</body>
+</html>
