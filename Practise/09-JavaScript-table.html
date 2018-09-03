@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <style>
+        table {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table width="800" id="tab" border="1" cellpadding="5" cellspacing="0" align="center">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>班期</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>哈达</td>
+            <td>11</td>
+            <td>s78</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>牛刚</td>
+            <td>11</td>
+            <td>s78</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>李红</td>
+            <td>11</td>
+            <td>s78</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>暗黑</td>
+            <td>11</td>
+            <td>s78</td>
+            <td><button onclick="deleteData(this)">删除</button></td>
+        </tr>
+    </table>
+    <hr>
+    <form action="1.php" name="myForm" onsubmit="return addData()">
+        Name:　　　<input type="text" name="name"><br>
+        Age:　　　　<input type="text" name="age"><br>
+        classList:　　<input type="text" name="classList"><br><br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+<script>
+//1.form
+    function addData(){
+    //2.获取大标签和form表单中的所有值
+    var oTab = document.getElementById('tab');
+    var oName = document.myForm.name.value;
+    var oAge= document.myForm.age.value;
+    var oClassList = document.myForm.classList.value;
+
+    // 3.获得当前表格行
+    // 返回当前表格的行,rows返回表格中所有行的一个数组
+    var index = oTab.rows.length;
+
+    //4.插入tr表格行
+    var oTr = oTab.insertRow(index);
+
+    //5.插入td单元格
+    oTr.insertCell(0).innerHTML = index;
+    oTr.insertCell(1).innerHTML = oName;
+    oTr.insertCell(2).innerHTML = oAge;
+    oTr.insertCell(3).innerHTML = oClassList;
+    oTr.insertCell(4).innerHTML = '<button onclick="deleteData(this)">删除</button>';
+
+        return false;
+    }
+
+    // 删除
+    function deleteData(obj) {
+        var oTab = document.getElementById('tab');
+        // 获取父级的父级行
+         var index = obj.parentNode.parentNode.rowIndex;
+        // console.log(index);
+        tab.deleteRow(index);
+    }
+
+</script>
+</html>
