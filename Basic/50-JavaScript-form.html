@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <base href="http://www.biying.com" id="biying" target="_blank">
+</head>
+<body>
+    <form action="1.php" name="myform" id="form-h5">
+        name: <input type="text" name="name">
+        <button>submit</button>
+    </form>
+    <!-- HTML5 -->
+    <!-- 类似label -->
+    <button form="form-h5">submit[HTML5]</button>
+    <!-- JS -->
+    <button onclick="document.myform.submit()">submit[JavaScript]</button>
+    <button onclick="document.myform.reset()">reset[JavaScript]</button>
+    <br>
+    <a href="./img/3.jpg">图片</a>
+    <a href="./world/1.html">页面</a>
+</body>
+</html>
