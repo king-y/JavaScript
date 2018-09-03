@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+    <style type="text/css"></style>
+</head>
+<body>
+
+    <script>
+    document.write(document.cookie + '<br>');
+
+    document.cookie = 'sex="女"';
+    document.write(document.cookie + '<br>');
+
+    document.cookie = 'username=jingjing; path=/';
+    document.write(document.cookie + '<br>');
+
+    // 设置未来时间
+    var d = new Date();
+    d.setTime(d.getTime() + 3600 * 1000);
+    document.cookie = 'username=jingjing; path=/; expires='+d.toUTCString();
+    document.write(document.cookie + '<br>');
+
+    //删除
+    // 设置过去时间
+    var d = new Date();
+    d.setTime(d.getTime() - 3600 * 1000);
+    document.cookie = 'username=jingjing; path=/; expires='+d.toUTCString();
+    document.write(document.cookie + '<br>');
+    </script>
+</body>
+</html>
