@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作</title>
+    <style type="text/css">
+        #imglist{
+            width: 98%;
+            padding: 10px;
+            border: 3px solid #0a0;
+        }
+        #imglist img{
+            width: 200px;
+            height: 100px;
+            background: url('../扩展/loading.gif') no-repeat 50% 50%;
+        }
+        #imglist img.selected{
+            border: 5px solid #f00;
+            width: 190px;
+            height: 90px;
+        }
+    </style>
+</head>
+<body id="b">
+    <div id="imglist">
+        <img src="../扩展/1.jpg" id="pic">
+        <img src="../扩展/2.jpg">
+        <img src="../扩展/3.jpg">
+        <img src="../扩展/4.jpg">
+        <img src="../扩展/5.jpg">
+        <img src="../扩展/6.jpg">
+        <img src="../扩展/7.jpg">
+        <img src="../扩展/8.jpg">
+        <img src="../扩展/9.gif">
+        <img src="../扩展/10.jpg">
+        <img src="../扩展/11.jpg">
+        <img src="../扩展/12.jpg">
+        <img src="../扩展/13.jpg">
+        <img src="../扩展/14.jpg">
+        <img src="../扩展/15.jpg">
+        <img src="../扩展/16.jpg">
+        <img src="../扩展/17.jpg">
+        <img src="../扩展/18.jpg">
+        <img src="../扩展/19.jpg">
+        <img src="../扩展/20.jpg">
+        <img src="../扩展/21.jpg">
+        <img src="../扩展/22.jpg">
+    </div>
+
+    <hr>
+    <button onclick="deleteImg()">删除图片</button>
+    <button onclick="replaceImg()">替换图片</button>
+    <button onclick="appendImg()">追加图片</button>
+    <button onclick="insertImg()">指定位置添加图片</button>
+    <button onclick="createImg()">创建新图片</button>
+    <button onclick="cloneImg()">克隆图片集合</button>
+
+
+    <br>
+    <br>
+    <img src="../扩展/23.jpg" width="200" id="myimg">
+
+    <script>
+    // HTMLDOM
+    pic.title = '静静';
+    // XML DOM
+    pic.setAttribute('title', '芸芸');
+    pic.setAttribute('data-img', '芸1234567890-芸');
+    // XML DOM
+    var title = document.createAttribute('title');
+    title.nodeValue = '鹏鹏';
+    pic.setAttributeNode(title);
+    // console.log(title);
+
+    var imgs = document.querySelectorAll('img');;
+
+    // 删除选定的图片
+    function deleteImg() {
+        for (var i = 0; i < imgs.length; i++) {
+            // 如果是selected的话,则删除
+            if (imgs[i].className == 'selected') {
+                imglist.removeChild(imgs[i]);
+                i--; // 每次删除第0张
+            }
+        }
+    }
+
+    // 替换选定的图片
+    function replaceImg() {
+        for (var i = 0; i < imgs.length; i++) {
+            // 如果是selected的话,则换
+            if (imgs[i].className == 'selected') {
+                imglist.replaceChild(myimg.cloneNode(true), imgs[i]);
+            }
+        }
+    }
+
+    // 追加图片
+    function appendImg() {
+        imglist.appendChild(myimg);
+    }
+
+    // 追加图片
+    function insertImg() {
+        imglist.insertBefore(myimg, imgs[14]);
+    }
+     // 创建元素节点
+    function createImg() {
+        var img = document.createElement('img');
+        img.src = '../扩展/1.jpg';
+        console.log(img);
+        imglist.appendChild(img);
+    }
+
+    // 克隆图片集合
+    function cloneImg() {
+        b.appendChild(imglist.cloneNode(true));
+    }
+
+
+
+    // 选定图片
+    for (var i = 0; i <  imgs.length; i++) {
+         imgs[i].onclick = function () {
+            if (this.className == '') {
+                this.className = 'selected';
+            } else {
+                this.className = '';
+            }
+         }
+    }
+
+    </script>
+</body>
+</html>
