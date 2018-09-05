@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #imglist{
+            width: 100%;
+            margin: 0 auto;
+        }
+        #imglist img{
+            width: 600px;
+            height: 350px;
+            background: url('./imgs/loading.gif') no-repeat 50% 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>下滑加载图片</h1>
+    <hr>
+
+    <div id="imglist">
+        <img data-src="./imgs/Meinv001.jpg">
+        <img data-src="./imgs/Meinv002.jpg">
+        <img data-src="./imgs/Meinv003.jpg">
+        <img data-src="./imgs/Meinv004.jpg">
+        <img data-src="./imgs/Meinv005.jpg">
+        <img data-src="./imgs/Meinv006.jpg">
+        <img data-src="./imgs/Meinv007.jpg">
+        <img data-src="./imgs/Meinv008.jpg">
+        <img data-src="./imgs/Meinv009.jpg">
+        <img data-src="./imgs/Meinv010.jpg">
+        <img data-src="./imgs/Meinv011.jpg">
+        <img data-src="./imgs/Meinv012.jpg">
+        <img data-src="./imgs/Meinv013.jpg">
+        <img data-src="./imgs/Meinv014.jpg">
+        <img data-src="./imgs/Meinv015.jpg">
+        <img data-src="./imgs/Meinv016.jpg">
+    </div>
+
+    <script>
+    var imgs = imglist.getElementsByTagName('img');
+    // 获取 imglist 的宽度
+    var box_width = imglist.offsetWidth;
+    // console.log(box_width);
+    // 获取视口的高度
+    var view_height = document.documentElement.clientHeight;
+    // console.log(view_height);
+
+    // 计算横着能加载图片的张图
+    // var x_number = 舍去取整(box宽 / img宽)
+    var x_number = Math.floor(box_width / imgs[0].offsetWidth);
+    // console.log(x_number);
+
+    // 首屏图片的数量
+    // Math.ceil((视口高 - 首图的顶部偏移量) / 图片高) * 横向图片数量
+    var first_number = Math.ceil((view_height - imgs[0].offsetTop) / imgs[0].offsetHeight) * x_number;
+    // console.log(first_number);
+    
+    var m = 0;// 总计录数
+    loadImage(m, first_number);
+    m += first_number;
+
+
+    // 绑定滚动事件
+    window.onscroll = function() {
+        if (m >= imgs.length) return;
+        // 滚动条滚动距离
+        var top = document.body.scrollTop || document.documentElement.scrollTop;
+
+        // 获取 还未加载的第一张图片 到顶部的偏移量
+        var img_top = imgs[m].offsetTop;
+
+        // 判断 加载临界点
+        if ((top + view_height) >= img_top) {
+            loadImage(m, x_number);
+            m += x_number;
+        }
+        // console.log(top , " : ", img_top);
+    }
+
+
+    /**
+     * 加载图片函数
+     * @param   start  从第几张开始加载
+     * @param   length 加载几张
+     */
+    function loadImage(start, length) {
+        for (var i = start; i < (start+length); i++) {
+            if (i >= imgs.length) return;
+            (function(i){
+                setTimeout(function () {
+                    imgs[i].src = imgs[i].getAttribute('data-src');
+                }, 500);
+            })(i);
+        }
+    }
+
+
+    </script>
+</body>
+</html>
