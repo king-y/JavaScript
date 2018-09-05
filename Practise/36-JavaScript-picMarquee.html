@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box{
+            width: 800px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            overflow: auto;
+            /*overflow: hidden;*/
+        }
+        #content{
+            width: 10000px;
+        }
+        #imglist{float: left;}
+        #imglist img{
+            width: 300px;
+            height: 200px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>图片无缝轮滚</h1>
+    <hr>
+
+    <div id="box">
+        <div id="content">
+            <div id="imglist">
+                <img src="./imgs/Meinv001.jpg">
+                <img src="./imgs/Meinv002.jpg">
+                <img src="./imgs/Meinv003.jpg">
+                <img src="./imgs/Meinv004.jpg">
+                <img src="./imgs/Meinv005.jpg">
+                <img src="./imgs/Meinv006.jpg">
+                <img src="./imgs/Meinv007.jpg">
+                <img src="./imgs/Meinv008.jpg">
+                <img src="./imgs/Meinv009.jpg">
+                <img src="./imgs/Meinv010.jpg">
+                <img src="./imgs/Meinv011.jpg">
+                <img src="./imgs/Meinv012.jpg">
+                <img src="./imgs/Meinv013.jpg">
+                <img src="./imgs/Meinv014.jpg">
+                <img src="./imgs/Meinv015.jpg">
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 获取一轮图片的宽度
+    var width =  imglist.offsetWidth;
+    // console.log(width);
+    // 将一轮图片克隆一份追加到当前图片之后.
+    content.appendChild(imglist.cloneNode(true));
+
+    function scrollImage () {
+        // 判断 一轮图片是否滚完
+        if (box.scrollLeft >= width) {
+            box.scrollLeft = 0;
+        }
+        box.scrollLeft += 50;
+        console.log(box.scrollLeft);
+    }
+    
+    setInterval(scrollImage, 100);
+
+    </script>
+</body>
+</html>
