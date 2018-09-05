@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>JS</title>
+</head>
+<body>
+    <h1>XML DOM Table - 自定义</h1>
+    <hr>
+    行:<input type="text" name="num1" id="num1">
+    列<input type="text" name="num1" id="num2">
+    <button onclick="createTab()" id="tabshow">建立表格</button>
+    <div id="tables"></div>
+
+<script>
+    function createTab () {
+        //获取要生成的行列数
+        var rows = document.getElementById('num1').value;
+        var cols = document.getElementById('num2').value;
+        //创建table 和 tr节点
+        var tab = document.createElement('table');
+        var tr = document.createElement('tr');
+
+        tab.width = '800';
+        tab.border = '1';
+        tab.cellSpacing = '0';
+        tables.appendChild(tab);//添加节点 table
+        tab.appendChild(tr);//添加节点 tr
+
+        //th 表头部分
+        for (var i = 0; i < cols; i++) {
+            var th = document.createElement('th');
+            tr.appendChild(th);
+            th.innerHTML = i;
+        }
+
+        //rows x cols 创建表格内容
+        for (var i = 0; i < rows; i++) {
+            tr = document.createElement('tr');
+            tab.appendChild(tr);
+            if (i%2 == 0 ) {
+                tr.style.backgroundColor='#f90';
+            }
+            for (var j = 0; j < cols; j++) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                td.innerHTML = i +'-'+ j;
+            }
+        }
+    }
+</script>
+</body>
+</html>
