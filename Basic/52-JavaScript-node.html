@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>节点访问 - 节点属性</title>
+</head>
+<body>
+    <ul id="books" title="这是一个不错的书单">
+        <!-- 今天天气不错,不冷不热 -->
+        <li>程序员必看书单</li>
+        <li>第一阶段:</li>
+        <li>《细说php》</li><li id="b1">《MySQL必知必会》</li>
+        <li>《javascript权威指南》</li>
+        <li>第二阶段:</li>
+        <li>《教你怎么不生气》</li>
+        <li>《佛经》</li>
+        <li>《老子》</li>
+        <li>《沉默的愤怒》</li>
+        <li>第三阶段:</li>
+        <li>《颈椎病康复指南》</li>
+        <li>《腰椎间盘突出日常护理》</li>
+        <li>《高血压降压宝典》</li>
+        <li>《精神病症状学》</li>
+        <li>第四阶段:</li>
+        <li>《活着》</li>
+    <span id="b2">2345678</span></ul>
+
+    <script>
+        var books = document.getElementById('books');
+        // document
+        console.dir(document);
+        // element     元素
+        console.dir(books);
+        // attr        属性 Attribute
+        console.dir(books.getAttributeNode('title'));
+        console.log(books.getAttributeNode('title'));
+        // text        文本
+        // comment     注释
+
+
+        // 获取 document的子节点
+        console.log('document的子节点: ', document.childNodes);
+        // 获取 books的子节点
+        console.log('books的子节点: ', books.childNodes.length);
+        for (var i = 0; i < books.childNodes.length; i++) {
+            console.dir(books.childNodes[i]);
+        }
+
+        console.log('books的子元素节点个数: ', books.children.length);
+
+        // 获取第一个子节点 firstChild
+        console.log('books的第一个子节点: ', books.firstChild);
+        // 获取最后一个子节点 lastChild
+        console.log('books的第一个子节点: ', books.lastChild);
+
+        // 获取父节点        parentNode
+        console.log('books的父节点: ', books.parentNode);
+        // 获取父元素节点    parentElement
+        console.log('books的父元素节点: ', books.parentElement);
+
+
+        // 获取前一个节点    previousSibling
+        console.log('b1的前一个节点: ', b1.previousSibling);
+        // 获取后一个节点    nextSibling
+        console.log('b1的后一个节点: ', b1.nextSibling);
+        console.log('b2的后一个节点: ', b2.nextSibling);
+
+        // 节点属性
+        console.log('document的 nodeName: ' + document.nodeName);
+        console.log('document的 nodeValue: ' + document.nodeValue);
+        console.log('document的 nodeType: ' + document.nodeType);
+
+        console.log('books的 nodeName: ' + books.nodeName);
+        console.log('books的 nodeValue: ' + books.nodeValue);
+        console.log('books的 nodeType: ' + books.nodeType);
+    </script>
+</body>
+</html>
