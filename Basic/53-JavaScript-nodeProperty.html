@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>获取属性节点</title>
+</head>
+<body>
+    <img src="../扩展/8.jpg" alt="pic" title="pic"  id="oImg" loading="123...." data-img="456~">
+
+    <script>
+    // 获取属性值
+    console.log(oImg.src);
+    console.log(oImg.getAttribute('src'));
+    console.log(oImg.getAttributeNode('src').nodeValue);
+
+    // 获取自定义属性值
+    console.log(oImg.loading);
+    console.log(oImg.getAttribute('loading'));
+    console.log(oImg.getAttribute('data-img'));
+    console.log(oImg.getAttributeNode('data-img').nodeValue);
+
+
+
+    </script>
+</body>
+</html>
