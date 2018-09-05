@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #banner {
+            width: 63%;
+            height: 460px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        #connet {
+            width:100%;
+            height: 460px;
+            position: relative;
+        }
+        #imglist img {
+            width:1226px;
+            height: 460px;
+            float: left;
+        }
+        #left {
+            width: 50px;
+            height: 76px;
+            line-height: 70px;
+            font-size: 55px;
+            color: #cccccc78;
+            position: absolute;
+            top: 182px;
+            text-align: center;
+            cursor:pointer ;
+        }
+        #left:hover{
+            background: rgba(0,0,0,.3);
+        }
+        #right {
+            width: 50px;
+            height: 76px;
+            line-height: 70px;
+            font-size: 55px;
+            color: #cccccc78;
+            position: absolute;
+            top: 182px;
+            right: -15px;
+            text-align: center;
+            cursor:pointer ;
+        }
+        #right:hover{
+            background: rgba(0,0,0,.3);
+        }
+        #iconlist {
+            position: absolute;
+            right: 0;
+            bottom:10px;
+        }
+        #iconlist li {
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin-left: 10px;
+            border-radius: 50%;
+            background: rgba(0,0,0,.3);
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            cursor:pointer ;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div id="connet">
+            <div id="imglist">
+                <a href="#"><img src="./img/banner1.jpg" alt="banner1" style="display: block"></a>
+                <a href="#"><img src="./img/banner2.jpg" alt="banner2" style="display: none"></a>
+                <a href="#"><img src="./img/banner3.jpg" alt="banner3" style="display: none"></a>
+                <a href="#"><img src="./img/banner4.jpg" alt="banner4" style="display: none"></a>
+                <a href="#"><img src="./img/banner5.jpg" alt="banner5" style="display: none"></a>
+                <a href="#"><img src="./img/banner6.jpg" alt="banner6" style="display: none"></a>
+            </div>
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+            <div id="iconlist">
+                <ul>
+                    <li style="background: #f88535">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        var oConnet = document.getElementById('connet');
+        var oImgs = oConnet.getElementsByTagName('img');
+        var oLis = oConnet.getElementsByTagName('li');
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+
+
+        // 1.设置循环
+        var n = 1;
+        function run(){
+            if (n > 5) {
+                n = 0;
+            }
+            // console.log(n);
+            imgLoop(n);
+            liLoop(n);
+            n++;
+        }
+
+        var timer = setInterval(run,1000)
+
+        // 图片循环
+        function imgLoop(n) {
+            for (var i = 0; i < oImgs.length; i++) {
+                oImgs[i].style.display = 'none';
+            }
+            oImgs[n].style.display = 'block';
+        }
+
+        // 原点循环
+        function liLoop(n) {
+            for (var i = 0; i < oLis.length; i++) {
+                oLis[i].style.background = 'rgba(0,0,0,.3)';
+            }
+            oLis[n].style.background = '#f88535';
+        }
+
+        // 鼠标移入移除
+        oConnet.onmouseover = function() {
+            clearInterval(timer);
+        }
+
+        oConnet.onmouseout = function() {
+            timer = setInterval(run,1000)
+        }
+
+        // 小原点选图
+        for (var i = 0; i < oLis.length; i++) {
+            (function(i){
+                oLis[i].onmouseover = function(){
+                    imgLoop(i);
+                    liLoop(i);
+                    // 使轮播按着当前的序列轮播
+                    n = i + 1;
+                }
+            })(i);
+        }
+
+        // 左右滚动
+        oLeft.onclick = function() {
+            // bug 需要点击两次
+                n--;
+                if (n < 0) {
+                    n = 5;
+                }
+                imgLoop(n);
+                liLoop(n);
+        }
+
+        oRight.onclick = function() {
+                imgLoop(n);
+                liLoop(n);
+                n++;
+                if (n > 5) {
+                    n = 0;
+                }
+        }
+
+
+
+    </script>
+</html>
