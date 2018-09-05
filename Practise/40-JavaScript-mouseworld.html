@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .strstyle {
+            font-size:20px;
+            color: #f00;
+            font-weight:700;
+            position:absolute;
+            top:-50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>蛇形文字</h1><hr>
+
+
+    <script>
+        //文字输出
+        var msg = "JavaScript 蛇形文字...";
+        for (var i = 0; i < msg.length; i++) {
+            document.write('<span id="str'+i+'" class="strstyle">');
+            document.write(msg[i]);
+            document.write('</span>');
+        }
+
+        //绑定鼠标移动事件,得到鼠标位置
+        document.onmousemove = function(e){
+            e = e || window.event;
+            document.title = 'X:'+e.clientX+'Y:'+e.clientY;
+
+            //让每个字之间 有延迟的统一行动!
+            var m = 0;
+            var timer = setInterval(function(){
+                // console.log(m);
+                // 根据字数 控制次数 不能无限循环定时
+                if(m < msg.length) {
+                    // 调用文字运动轨迹函数
+                    // x坐标,y坐标,第几个字
+                    snake(e.clientX, e.clientY, m);
+                    m++;
+                }else{
+                    //如果 次数大于等于字数,就清除定时
+                    clearInterval(timer);
+                }
+            },50);
+        }
+
+        // 文字运动轨迹函数
+        function snake(x,y,i){
+            //获得每一个span元素对象
+            var span = document.getElementById('str'+i);
+            // console.log(span);
+            span.style.left = x + (i*25) + 'px';
+            span.style.top = y + 'px';
+        }
+
+    </script>
+</body>
+</html>
