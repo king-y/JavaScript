@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>商品详情页</title>
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="./public/js/html5shiv.min.js"></script>
+    <script src="./public/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        textarea {
+            width: 800px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        #msg {
+            width:800px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+        #li {
+            display: block;
+            border-bottom: 1px dashed #ebebeb;
+            margin: 10px 0;
+            padding: 8px 0;
+            }
+    </style>
+</head>
+
+<body>
+    <!-- Head Start. -->
+    <header>
+        <!-- Nav Start-->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="visible-xs-inline-block navbar-brand" href="#">锤子商城</a>
+                    <a class="hidden-xs navbar-brand glyphicon glyphicon-heart" href="#"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">在线商城</a></li>
+                        <li><a href="#">坚果Pro 2S</a></li>
+                        <li><a href="#">坚果R1</a></li>
+                        <li><a href="#">坚果TNT工作站</a></li>
+                        <li><a href="#">Smartisan OS</a></li>
+                        <li><a href="#">欢喜云</a></li>
+                        <li><a href="#">应用</a></li>
+                        <li><a href="#">论坛</a></li>
+                        <li><a href="#">荣誉与奖项</a></li>
+                        <li class="hidden-xs"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+                        <li class="hidden-xs"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Nav end -->
+    </header>
+    <!-- Head End -->
+
+     <!-- container start -->
+        <div class="container" style="margin-top: 100px;">
+            <div class="panel panel-default">
+              <div class="panel-heading">留言板</div>
+              <div class="panel-body">
+                 <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-3">
+                      <input id="person" type="text" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    <div class="col-md-3">
+                        <small><input type="text" id="floor"  class="form-control" placeholder="楼层总数" disabled></small>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea id="text" cols="30" rows="10"></textarea>
+                        <br>
+                        <button class="btn btn-info" id="btn">提交</button>
+                    </div>
+                    <div class="col-md-12">
+                        <br><br>
+                        <h4 style="color: #FF9800;">留言</h4>
+                        <hr>
+                        <div id="msg"></div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     <!-- container end -->
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="./public/js/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="./public/js/bootstrap.min.js"></script>
+</body>
+    <script>
+            var num = 0;
+            var num1 = 0;
+            var msg = document.getElementById("msg");
+            var text = document.getElementById("text");
+            var btn = document.getElementById("btn");
+            var person = document.getElementById("person");
+            var ul = document.createElement("ul");
+            ul.id = "ul1";
+            var time = document.createElement("div");
+            // 获取时间
+            function getTime(){
+                var weeks = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth()+1;
+                var da = date.getDate();
+                var hour = date.getHours()<10 ? "0"+date.getHours() : date.getHours() ;
+                var minute = date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes() ;
+                var second = date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds() ;
+                var week = date.getDay();
+                var time = year+"年"+month+"月"+da+"日 "+hour+":"+minute+":"+second +" "+weeks[week];
+                return time;
+            }
+            document.getElementById("floor").value=num+"楼";
+            btn.onclick = function() {
+                //非空判断
+                if(person.value==""||person.value==null){
+                    alert("发布人不允许为空！");
+                    return false;
+                }
+                if(text.value==""||text.value==null){
+                    alert("内容不允许为空！");
+                    return false;
+                }
+
+                //获取时间
+                num = num+1;
+                var datetime = getTime();
+                time = document.createTextNode("发布时间：" + datetime);
+                var li = document.createElement("li");
+                li.id = "li";
+
+                //创建删除功能
+                var oA = document.createElement("a");
+                var oAtext = document.createTextNode("删除");
+                oA.href = "#";
+                oA.appendChild(oAtext);
+
+                //创建发布文本框
+                var fabu = document.createElement("textarea");
+                fabu.rows = "10";
+                fabu.style = 'margin: 0px; width: 760px; height: 138px; resize="none"';
+                fabu.value = text.value;
+                fabu.disabled="disabled";
+
+                //创建编辑功能
+                var oB = document.createElement("a");
+                var oBtext = document.createTextNode("编辑");
+                oB.href = "#";
+                oB.appendChild(oBtext);
+
+                //创建确认按钮
+                var butt = document.createElement("input");
+                butt.type = "button";
+                butt.value = "确认";
+                butt.style.display = "none";
+
+
+                //解决兼容问题
+                var ali = ul.getElementsByTagName("li");
+                if(ali.length == 0) {
+                    ul.appendChild(li);
+                } else {
+                    ul.insertBefore(li, ali[0]);
+                }
+
+                //添加节点
+                msg.appendChild(ul);
+                var lou = document.createTextNode("第"+num+"楼");
+                var persons = document.createTextNode("发布人："+ person.value);
+                document.getElementById("person").value="";
+                var textnode = document.createTextNode("发布内容：");
+                document.getElementById("text").value="";
+                li.appendChild(lou);
+                li.appendChild(document.createElement("br"));
+                li.appendChild(persons);
+                li.appendChild(document.createElement("br"));
+                li.appendChild(textnode);
+                li.appendChild(document.createElement("br"));
+                li.appendChild(fabu);
+                li.appendChild(document.createElement("br"));
+                li.appendChild(time);
+                li.appendChild(oA);
+                li.appendChild(oB);
+                li.appendChild(butt);
+
+                //删除
+                oA.onclick = function() {
+                    ul.removeChild(this.parentNode);
+                    //删除时更新
+                    num1++;//删除次数
+                    document.getElementById("floor").value=num-num1+"楼";
+                };
+
+                //编辑
+                oB.onclick = function() {
+                    fabu.disabled = "";
+                    butt.style.display = "block";
+                }
+
+                //确认更改
+                butt.onclick = function() {
+                    fabu.disabled="disabled";
+                    butt.style.display = "none";
+                }
+
+                //楼层展示
+                document.getElementById("floor").value=num-num1+"楼";
+            }
+        </script>
+</html>
